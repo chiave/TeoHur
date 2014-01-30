@@ -16,6 +16,7 @@
     		<div id="header">
     		</div><!-- end div header -->
     		
+    		<div class="fullWrapper">
     		<div class="leftSide">
     			<div class="verticalMenu">
     				<ul>
@@ -29,9 +30,12 @@
     				</ul>
     			</div>
     		</div>
+    		
+    		<div class="mainSide">
     	
-       		 {% block body %}{% endblock %}
-       		 
+       		 	{% block mainSide %}{% endblock %}
+       		 </div>
+       		 </div><!-- end class fullWrapper -->
        		 <div id="footer">
        		 </div>
         </div> <!-- end div page -->
@@ -40,9 +44,9 @@
         <script>
         	$(document).ready(function(){
             	$('.verticalMenu li').hover(function(){
-                	$(this).animate({paddingLeft: '+=10px'}, 200);
+                	$(this).animate({paddingLeft: '+=10px'}, 400);
                 	}, function() {
-                    	$(this).animate({paddingLeft: '-=10px'}, 50);
+                    	$(this).animate({paddingLeft: '-=10px'}, 400);
                 	});  
             });
         </script>
