@@ -1,3 +1,7 @@
+chiave_store:
+    resource: "@ChiaveStoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
 chiave_static:
     resource: "@ChiaveStaticBundle/Resources/config/routing.yml"
     prefix:   /

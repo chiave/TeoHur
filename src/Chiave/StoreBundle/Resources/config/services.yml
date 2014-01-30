@@ -1,0 +1,7 @@
+parameters:
+#    chiave_store.example.class: Chiave\StoreBundle\Example
+
+services:
+#    chiave_store.example:
+#        class: %chiave_store.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
