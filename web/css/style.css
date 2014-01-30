@@ -1,0 +1,60 @@
+body, html
+{
+	width:100%;
+	height:100%;
+}
+
+#page
+{
+	min-width:1005px;
+	font-family: 'Titillium Web', sans-serif;
+	position: relative;
+	min-height: 100%;
+}
+
+#header
+{
+	min-width:1005px;
+	height:100px;
+	background:#65AC1D;
+}
+#footer
+{
+    width:100%;
+    position: absolute;
+    bottom:0px;
+    background:#65AC1D;
+    height: 60px;
+   
+}
+
+.leftSide
+{
+	width:230px;
+	padding-bottom: 65px;
+	
+}
+.verticalMenu
+{
+	margin-top: 10px;
+}
+.verticalMenu li
+{
+	width:160px;
+}
+.verticalMenu ul li a
+{
+	display:block;
+	width:140px;
+	padding:10px;
+	background:#7FE617;
+	border-top:2px solid #99FF31;
+	border-radius:3px;
+	text-decoration: none;
+	color:#404040;
+	font-size: 16px;
+}
+.verticalMenu ul li a:HOVER {
+	background:#71C61C;
+	color:white;
+}
