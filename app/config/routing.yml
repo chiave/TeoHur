@@ -1,0 +1,3 @@
+chiave_static:
+    resource: "@ChiaveStaticBundle/Resources/config/routing.yml"
+    prefix:   /

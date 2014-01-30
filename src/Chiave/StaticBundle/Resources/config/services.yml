@@ -1,0 +1,7 @@
+parameters:
+#    chiave_static.example.class: Chiave\StaticBundle\Example
+
+services:
+#    chiave_static.example:
+#        class: %chiave_static.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
