@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+         <link rel="stylesheet" href="{{ asset('css/back.css') }}" type="text/css" />
+         <link rel="stylesheet" href="{{ asset('css/reset.css') }}" type="text/css" />
+        {% endblock %}
+         <script src="{{ asset('js/jquery-1.11.0.min.js') }}"></script>
+      </head>
+  <body>
+  <div id="header">
+  	<h1>PANEL ADMINISTRATORA</h1>
+  </div>
+  	{% block body %}
+  	 
+  	{% endblock %}
+  </body>
