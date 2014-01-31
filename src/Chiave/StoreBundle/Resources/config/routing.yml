@@ -1,3 +1,6 @@
 chiave_store_homepage:
     pattern:  /addCategory
     defaults: { _controller: ChiaveStoreBundle:Store:addCategory }
+chiave_store_addFile:
+    pattern: /addFile
+    defaults: { _controller: ChiaveStoreBundle:Store:addFile }

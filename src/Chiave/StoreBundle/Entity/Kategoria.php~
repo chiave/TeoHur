@@ -46,4 +46,73 @@ class Kategoria
     {
         return $this->id;
     }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Kategoria
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set photo_link
+     *
+     * @param string $photoLink
+     * @return Kategoria
+     */
+    public function setPhotoLink($photoLink)
+    {
+        $this->photo_link = $photoLink;
+
+        return $this;
+    }
+
+    /**
+     * Get photo_link
+     *
+     * @return string 
+     */
+    public function getPhotoLink()
+    {
+        return $this->photo_link;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Kategoria
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
 }
