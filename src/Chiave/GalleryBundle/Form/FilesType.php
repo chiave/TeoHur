@@ -20,7 +20,7 @@ class FilesType extends AbstractType
     {
         $now = new \DateTime('now');
         $builder
-            ->add('key')
+            ->add('productKey')
             ->add('name')
             ->add('category', 'entity', array(
                     'class' => 'ChiaveGalleryBundle:Categories',

@@ -34,7 +34,7 @@ class Files
      *     unique=true
      * )
      */
-    private $product_key;
+    private $productKey;
 
     /**
      * @var string
@@ -140,26 +140,26 @@ class Files
     }
 
     /**
-     * Set key
+     * Set productKey
      *
-     * @param integer $key
-     * @return integer
+     * @param integer $productKey
+     * @return Files
      */
-    public function setKey($key)
+    public function setProductKey($productKey)
     {
-        $this->key = $key;
+        $this->productKey = $productKey;
 
         return $this;
     }
 
     /**
-     * Get key
+     * Get productKey
      *
      * @return integer
      */
-    public function getKey()
+    public function getProductKey()
     {
-        return $this->key;
+        return $this->productKey;
     }
 
     /**
