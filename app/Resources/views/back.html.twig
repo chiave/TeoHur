@@ -65,6 +65,9 @@
                     <ul class="side-nav">
                         <li><h6><strong>Menu boczne</strong></h6></li>
                         <li class="divider"></li>
+                        <li {% if active == "chiave_gallery_categories" %}class="active"{% endif %}>
+                            <a href="{{ path('chiave_gallery_categories') }}">Galerie</a>
+                        </li>
                         <li {% if active == "chiave_gallery_files" %}class="active"{% endif %}>
                             <a href="{{ path('chiave_gallery_files') }}">Pliki</a>
                         </li>

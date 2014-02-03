@@ -21,12 +21,13 @@
 # Files
 Name: Nazwa
 Description: Opis
+Category: Galeria
 Visible: Udostępnij plik
 File: Plik
 
-# Front - form in contact
-firstname: Imię
-lastname: Nazwisko
-email: Adres e-mail
-phone: Nr telefonu
-message: Twoja wiadomość
+# # Front - form in contact
+# firstname: Imię
+# lastname: Nazwisko
+# email: Adres e-mail
+# phone: Nr telefonu
+# message: Twoja wiadomość

@@ -7,14 +7,6 @@ use Symfony\Component\Validator\Constraints as Assert; //use annotation instead
 
 use Doctrine\ORM\Mapping as ORM;
 
-// TODO: make some true constants!!
-const FILE_TYPE_OTHERS       = 0;
-const FILE_TYPE_ACTS         = 1;
-const FILE_TYPE_TRAINING     = 2;
-const FILE_TYPE_MANAGEMENT   = 3;
-const FILE_TYPE_GALLERY      = 4;
-const FILE_TYPE_ICON         = 5;
-
 /**
  * Files
  *
@@ -41,18 +33,17 @@ class Files
     private $name;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="type", type="integer")
-     */
-    private $type = FILE_TYPE_OTHERS;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Categories", inversedBy="files")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id", nullable=false)
+     **/
+    private $category;
 
     /**
      * @var boolean
@@ -64,9 +55,9 @@ class Files
     /**
      * @var string
      *
-     * @ORM\Column(name="path", type="string", length=255, nullable=true)
+     * @ORM\Column(name="serverName", type="string", length=255, nullable=true)
      */
-    private $path;
+    private $serverName;
 
     /**
      * @Assert\File(maxSize="20000000") //20M
@@ -157,57 +148,6 @@ class Files
     }
 
     /**
-     * Set type
-     *
-     * @param integer $type
-     * @return Files
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return integer
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
-     * Get type as text
-     *
-     * @return string
-     */
-    public function getTypeText()
-    {
-        $types = $this->getTypesArray();
-        return $types[$this->type];
-    }
-
-    /**
-     * Get all types
-     *
-     * @return array
-     */
-    public static function getTypesArray()
-    {
-        return array(
-            FILE_TYPE_OTHERS => 'Inne',
-            FILE_TYPE_ACTS => 'Akty prawne',
-            FILE_TYPE_TRAINING => 'Szkolenia',
-            FILE_TYPE_MANAGEMENT => 'Zarządzanie',
-            FILE_TYPE_GALLERY => 'Galeria',
-            FILE_TYPE_ICON => 'Ikona',
-        );
-    }
-
-    /**
      * Set visible
      *
      * @param boolean $visible
@@ -232,16 +172,16 @@ class Files
 
     public function getAbsolutePath()
     {
-        return null === $this->path
+        return null === $this->serverName
             ? null
-            : $this->getUploadRootDir().'/'.$this->path;
+            : $this->getUploadRootDir().'/'.$this->serverName;
     }
 
     public function getWebPath()
     {
-        return null === $this->path
+        return null === $this->serverName
             ? null
-            : '../'.$this->getUploadDir().'/'.$this->path;
+            : '../'.$this->getUploadDir().'/'.$this->serverName;
     }
 
     protected function getUploadRootDir()
@@ -267,12 +207,12 @@ class Files
     {
         $this->file = $file;
         // check if we have an old image path
-        if (isset($this->path)) {
+        if (isset($this->serverName)) {
             // store the old name to delete after the update
-            $this->temp = $this->path;
-            $this->path = null;
+            $this->temp = $this->serverName;
+            $this->serverName = null;
         } else {
-            $this->path = 'initial';
+            $this->serverName = 'initial';
         }
     }
 
@@ -285,7 +225,7 @@ class Files
         if (null !== $this->getFile()) {
             // do whatever you want to generate a unique name
             $filename = sha1(uniqid(mt_rand(), true));
-            $this->path = $filename.'.'.$this->getFile()->guessExtension();
+            $this->serverName = $filename.'.'.$this->getFile()->guessExtension();
 
             $this->originalName =$this->getFile()->getClientOriginalName();
             $this->mimeType = $this->getFile()->getClientMimeType();
@@ -307,7 +247,7 @@ class Files
         // if there is an error when moving the file, an exception will
         // be automatically thrown by move(). This will properly prevent
         // the entity from being persisted to the database on error
-        $this->getFile()->move($this->getUploadRootDir(), $this->path);
+        $this->getFile()->move($this->getUploadRootDir(), $this->serverName);
 
         // check if we have an old image
         if (isset($this->temp)) {
@@ -546,25 +486,48 @@ class Files
     }
 
     /**
-     * Set path
+     * Set category
      *
-     * @param string $path
+     * @param \Chiave\GalleryBundle\Entity\Categories $category
      * @return Files
      */
-    public function setPath($path)
+    public function setCategory(\Chiave\GalleryBundle\Entity\Categories $category)
     {
-        $this->path = $path;
+        $this->category = $category;
 
         return $this;
     }
 
     /**
-     * Get path
+     * Get category
+     *
+     * @return \Chiave\GalleryBundle\Entity\Categories
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Set serverName
+     *
+     * @param string $serverName
+     * @return Files
+     */
+    public function setServerName($serverName)
+    {
+        $this->serverName = $serverName;
+
+        return $this;
+    }
+
+    /**
+     * Get serverName
      *
      * @return string
      */
-    public function getPath()
+    public function getServerName()
     {
-        return $this->path;
+        return $this->serverName;
     }
 }

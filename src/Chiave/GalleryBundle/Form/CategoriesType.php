@@ -6,11 +6,9 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-use Doctrine\ORM\EntityRepository;
+use Chiave\GalleryBundle\Entity\Categories;
 
-use Chiave\GalleryBundle\Entity\Files;
-
-class FilesType extends AbstractType
+class CategoriesType extends AbstractType
 {
         /**
      * @param FormBuilderInterface $builder
@@ -21,18 +19,7 @@ class FilesType extends AbstractType
         $now = new \DateTime('now');
         $builder
             ->add('name')
-            ->add('category', 'entity', array(
-                    'class' => 'ChiaveGalleryBundle:Categories',
-                    'query_builder' => function(EntityRepository $er) {
-                        return $er->createQueryBuilder('f')
-                            ->orderBy('f.name', 'ASC');
-                    },
-                    'required' => false,
-                )
-            )
             ->add('description')
-            ->add('visible')
-            ->add('file')
             ->add('submit',
                 'submit',
                 array(
@@ -48,7 +35,7 @@ class FilesType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Chiave\GalleryBundle\Entity\Files'
+            'data_class' => 'Chiave\GalleryBundle\Entity\Categories'
         ));
     }
 
@@ -57,6 +44,6 @@ class FilesType extends AbstractType
      */
     public function getName()
     {
-        return 'chiave_gallerybundle_files';
+        return 'chiave_gallerybundle_categories';
     }
 }

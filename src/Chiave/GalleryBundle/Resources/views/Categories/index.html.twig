@@ -1,9 +1,9 @@
 {% extends "::back.html.twig" %}
 
-{% block title %}Zarządzanie plikami{% endblock %}
-{% block description %}lista plików{% endblock %}
+{% block title %}Zarządzanie galeriami{% endblock %}
+{% block description %}lista galerii{% endblock %}
 
-{% block active_name %}chiave_gallery_files{% endblock %}
+{% block active_name %}chiave_gallery_categories{% endblock %}
 
 {% block body -%}
     <table class="records_list">
@@ -11,31 +11,25 @@
             <tr>
                 <th>Lp.</th>
                 <th>Nazwa</th>
-                <th>W galerii</th>
-                <th>Widoczny<br />publicznie</th>
-                <th>Metadane</th>
+                <th>Opis</th>
                 <th>
-                    <a class="tiny button success" href="{{ path('chiave_gallery_files_new') }}">
-                        Dodaj nowy plik
+                    <a class="tiny button success" href="{{ path('chiave_gallery_categories_new') }}">
+                        Dodaj nową galerię
                     </a>
                 </th>
             </tr>
         </thead>
         <tbody>
-        {% for file in files %}
+        {% for category in categories %}
             <tr>
                 <td>{{ loop.index }}</td>
-                <td>{{ file.name }}</td>
-                <td>{{ file.category }}</td>
-                <td>{% if file.visible %}Tak{% endif %}</td>
-                <td>Oryginalna nazwa:<br />
-                    {{ file.originalName }}<br/>
-                    Rozmiar: {{ file.sizeText }}</td>
+                <td>{{ category.name }}</td>
+                <td>{{ category.description }}</td>
                 <td>
                     <div class="button-bar">
                         <ul class="button-group">
-                            <li><a class="tiny button" href="{{ path('chiave_gallery_files_edit', { 'id': file.id }) }}">Edytuj</a></li>
-                            <li><a class="tiny button alert delete_button" href="{{ path('chiave_gallery_files_delete', { 'id': file.id }) }}">Usuń</a></li>
+                            <li><a class="tiny button" href="{{ path('chiave_gallery_categories_edit', { 'id': category.id }) }}">Edytuj</a></li>
+                            <li><a class="tiny button alert delete_button" href="{{ path('chiave_gallery_categories_delete', { 'id': category.id }) }}">Usuń</a></li>
                         </ul>
                     </div>
                 </td>
