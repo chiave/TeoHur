@@ -1,0 +1,69 @@
+{% extends "::back.html.twig" %}
+
+{% block title %}Zarządzanie produktami{% endblock %}
+{% block description %}lista produktów{% endblock %}
+
+{% block active_name %}chiave_gallery_files{% endblock %}
+
+{% block body -%}
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Nazwa</th>
+                <th>Galeria</th>
+                <th>Widoczny<br />publicznie</th>
+                <th>Metadane</th>
+                <th>
+                    <a class="tiny button success" href="{{ path('chiave_gallery_files_new') }}">
+                        Dodaj nowy produkt
+                    </a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for file in files %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ file.name }}</td>
+                <td>{{ file.category }}</td>
+                <td>{% if file.visible %}Tak{% endif %}</td>
+                <td>Oryginalna nazwa:<br />
+                    {{ file.originalName }}<br/>
+                    Rozmiar: {{ file.sizeText }}</td>
+                <td>
+                    <div class="button-bar">
+                        <ul class="button-group">
+                            <li><a class="tiny button" href="{{ path('chiave_gallery_files_edit', { 'id': file.id }) }}">Edytuj</a></li>
+                            <li><a class="tiny button alert delete_button" href="{{ path('chiave_gallery_files_delete', { 'id': file.id }) }}">Usuń</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block javascripts -%}
+
+<script type="text/javascript">
+    $('.delete_button').click(function(e) {
+        e.preventDefault();
+
+        var toRemove = $(this).closest('tr');
+
+        $.post(
+            $(this).attr('href'),
+            function(data) {
+                if (data.success) {
+                    $(toRemove).remove();
+                    alert('Plik usunięty pomyślnie');
+                } else {
+                    alert('Wystąpił straszny błąd: '+data.error+' :(');
+                }
+            });
+    });
+</script>
+
+{% endblock %}

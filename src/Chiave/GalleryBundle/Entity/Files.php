@@ -26,9 +26,9 @@ class Files
     private $id;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="key", type="integer")
+     * @ORM\Column(name="key", type="integer", nullable=true)
      */
     private $key;
 
