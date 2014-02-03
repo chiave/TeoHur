@@ -28,6 +28,13 @@ class Files
     /**
      * @var string
      *
+     * @ORM\Column(name="key", type="integer")
+     */
+    private $key;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
@@ -122,6 +129,29 @@ class Files
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set key
+     *
+     * @param integer $key
+     * @return Files
+     */
+    public function setKey($key)
+    {
+        $this->key = $key;
+
+        return $this;
+    }
+
+    /**
+     * Get key
+     *
+     * @return integer
+     */
+    public function getKey()
+    {
+        return $this->key;
     }
 
     /**
