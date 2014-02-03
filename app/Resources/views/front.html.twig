@@ -15,31 +15,31 @@
     	<div id="page">
     		<div id="header">
     		</div><!-- end div header -->
-    		
+
     		<div class="fullWrapper">
     		<div class="leftSide">
     			<div class="verticalMenu">
     				<ul>
-    					<li><a href="">Strona główna</a></li>
-    					<li><a href="">O firmie</a></li>
-    					<li><a href="">Produkty</a></li>
-    					<li><a href="">Cennik</a></li>
-    					<li><a href="">Zamówienia</a></li>
-    					<li><a href="">Dojazd</a></li>
-    					<li><a href="">Kontakt</a></li>
+<li><a href="{{ path('chiave_static', { slug: '_home'} ) }}">Strona główna</a></li>
+<li><a href="{{ path('chiave_static', { slug: '_oFirmie'} ) }}">O firmie</a></li>
+<li><a href="{{ path('chiave_static', { slug: '_produkty'} ) }}">Produkty</a></li>
+<li><a href="{{ path('chiave_static', { slug: '_cennik'} ) }}">Cennik</a></li>
+<li><a href="{{ path('chiave_static', { slug: '_zamowienia'} ) }}">Zamówienia</a></li>
+<li><a href="{{ path('chiave_static', { slug: '_dojazd'} ) }}">Dojazd</a></li>
+<li><a href="{{ path('chiave_static', { slug: '_kontakt'} ) }}">Kontakt</a></li>
     				</ul>
     			</div>
     		</div>
-    		
+
     		<div class="mainSide">
-    	
+
        		 	{% block mainSide %}{% endblock %}
        		 </div>
        		 </div><!-- end class fullWrapper -->
        		 <div id="footer">
        		 </div>
         </div> <!-- end div page -->
-        
+
         {% block javascripts %}
         <script>
         	$(document).ready(function(){
@@ -47,10 +47,10 @@
                 	$(this).animate({paddingLeft: '+=10px'}, 400);
                 	}, function() {
                     	$(this).animate({paddingLeft: '-=10px'}, 400);
-                	});  
+                	});
             });
         </script>
         {% endblock %}
-        
+
     </body>
 </html>

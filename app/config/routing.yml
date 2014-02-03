@@ -1,3 +1,8 @@
+chiave_static:
+    resource: "@ChiaveStaticBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 login_check:
     path:   /login_check
 
@@ -10,14 +15,6 @@ chiave_core_bundle:
     type:     annotation
 
 chiave_gallery:
-    resource: "@ChiaveGalleryBundle/Controller/"
+    resource: "@ChiaveGalleryBundle/Controller"
     type:     annotation
-    prefix:   /
-
-chiave_store:
-    resource: "@ChiaveStoreBundle/Resources/config/routing.yml"
-    prefix:   /
-
-chiave_static:
-    resource: "@ChiaveStaticBundle/Resources/config/routing.yml"
     prefix:   /

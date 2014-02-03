@@ -17,9 +17,8 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Chiave\CoreBundle\ChiaveCoreBundle(),
-        	new Chiave\StaticBundle\ChiaveStaticBundle(),
-            new Chiave\StoreBundle\ChiaveStoreBundle(),
             new Chiave\GalleryBundle\ChiaveGalleryBundle(),
+            new Chiave\StaticBundle\ChiaveStaticBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

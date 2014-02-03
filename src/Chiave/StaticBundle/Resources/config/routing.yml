@@ -1,4 +1,0 @@
-chiave_static_page:
-    path: /{slug} 
-    defaults: { _controller: ChiaveStaticBundle:Default:index }
-    
