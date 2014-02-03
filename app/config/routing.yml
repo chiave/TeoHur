@@ -1,3 +1,19 @@
+login_check:
+    path:   /login_check
+
+logout:
+    path:   /logout
+
+chiave_core_bundle:
+    resource: "@ChiaveCoreBundle/Controller"
+    prefix:   /
+    type:     annotation
+
+chiave_gallery:
+    resource: "@ChiaveGalleryBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 chiave_store:
     resource: "@ChiaveStoreBundle/Resources/config/routing.yml"
     prefix:   /

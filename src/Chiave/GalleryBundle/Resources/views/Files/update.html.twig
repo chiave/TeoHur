@@ -1,0 +1,16 @@
+{% extends "::back.html.twig" %}
+
+{% block title %}Zarządzanie plikami{% endblock %}
+{% block description %}tworzenie/edycja pliku{% endblock %}
+
+{% block active_name %}chiave_gallery_files{% endblock %}
+
+{% block body -%}
+
+    {{ form(form) }}
+
+    <a class="small button" href="{{ path('chiave_gallery_files') }}">
+        Powrót do listy plików
+    </a>
+
+{% endblock %}

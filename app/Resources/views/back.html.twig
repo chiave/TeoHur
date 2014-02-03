@@ -1,19 +1,90 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}
-         <link rel="stylesheet" href="{{ asset('css/back.css') }}" type="text/css" />
-         <link rel="stylesheet" href="{{ asset('css/reset.css') }}" type="text/css" />
-        {% endblock %}
-         <script src="{{ asset('js/jquery-1.11.0.min.js') }}"></script>
-      </head>
-  <body>
-  <div id="header">
-  	<h1>PANEL ADMINISTRATORA</h1>
-  </div>
-  	{% block body %}
-  	 
-  	{% endblock %}
-  </body>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>{% block title %}Panel administratora{% endblock %} - Teofil</title>
+    <!--title>{% block description %}strona główna{% endblock %}</title-->
+
+     {#<link rel="stylesheet" href="{{ asset('css/back.css') }}" type="text/css" />
+     <link rel="stylesheet" href="{{ asset('css/reset.css') }}" type="text/css" />#}
+
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/chiavecore/css/foundation.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/chiavecore/css/backend.css') }}" />
+
+    {% block stylesheets %}{% endblock %}
+
+
+    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="{{ asset('bundles/chiavecore/js/modernizr.js') }}"></script>
+    <script src="{{ asset('bundles/chiavecore/js/vendor/fastclick.js') }}"></script>
+</head>
+
+<body>
+{#
+    <div id="header">
+        <h1>PANEL ADMINISTRATORA</h1>
+    </div>
+#}
+    <nav class="top-bar" data-topbar>
+        <ul class="title-area">
+            <li class="name">
+                <h1><a href="#">Hurtownia Teofil</a></h1>
+            </li>
+            {# Wyświetli się dla tragicznie małych ekranów #}
+            <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+        </ul>
+        <section class="top-bar-section">
+            <!-- Right Nav Section -->
+            <ul class="right">
+                <li class="has-dropdown">
+                    <a href="#">Użytkownik</a>
+                    <ul class="dropdown">
+                        <li><a href="{{ path('logout') }}">Wyloguj</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+    </nav>
+
+    <section role="main">
+        <div class="row header-intro">
+            <header>
+                <h1>{{ block('title')}}</h1>
+                <h4>{{ block('description') }}</h4>
+            </header>
+        </div>
+
+        {% set active = block('active_name') %}
+        <div class="row">
+            <div class="medium-3 columns">
+                <nav class="sidebar">
+                    <ul class="side-nav">
+                        <li><h6><strong>Menu boczne</strong></h6></li>
+                        <li class="divider"></li>
+                        <li {% if active == "chiave_gallery_files" %}class="active"{% endif %}>
+                            <a href="{{ path('chiave_gallery_files') }}">Pliki</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="medium-9 columns">
+                {% block body %}{% endblock %}
+                {% block javascripts %}{% endblock %}
+            </div>
+        </div>
+    </section>
+
+    <script src="{{ asset('bundles/chiavecore/js/foundation.min.js') }}"></script>
+    <script type="text/javascript">
+        $(document).foundation();
+
+        $(function() {
+
+        });
+    </script>
+</body>
+</html>
