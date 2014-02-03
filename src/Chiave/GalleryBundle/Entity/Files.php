@@ -28,9 +28,13 @@ class Files
     /**
      * @var integer
      *
-     * @ORM\Column(name="key", type="integer", nullable=true)
+     * @ORM\Column(
+     *     name="product_key",
+     *     type="integer",
+     *     unique=true
+     * )
      */
-    private $key;
+    private $product_key;
 
     /**
      * @var string
@@ -48,7 +52,11 @@ class Files
 
     /**
      * @ORM\ManyToOne(targetEntity="Categories", inversedBy="files")
-     * @ORM\JoinColumn(name="category_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(
+     *     name="category_id",
+     *     referencedColumnName="id",
+     *     nullable=false
+     * )
      **/
     private $category;
 
@@ -135,7 +143,7 @@ class Files
      * Set key
      *
      * @param integer $key
-     * @return Files
+     * @return integer
      */
     public function setKey($key)
     {
