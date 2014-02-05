@@ -41,7 +41,7 @@
        		 </div>
         </div> <!-- end div page -->
 
-        {% block javascripts %}
+       
         <script>
         	$(document).ready(function(){
             	$('.verticalMenu li').hover(function(){
@@ -51,7 +51,8 @@
                 	});
             });
         </script>
-        {% endblock %}
+        {% block javascripts %} {% endblock %}
+       
 
     </body>
 </html>
