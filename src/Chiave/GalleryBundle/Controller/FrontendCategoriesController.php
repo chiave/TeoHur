@@ -19,7 +19,6 @@ use Chiave\GalleryBundle\Form\CategoriesType;
  * Pages controller.
  *
  * @Route("/")
- * @Security("has_role('ROLE_ADMIN')")
  */
 class FrontendCategoriesController extends Controller
 {
