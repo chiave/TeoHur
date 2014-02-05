@@ -21,7 +21,7 @@
     		<div class="leftSide">
     			<div class="verticalMenu">
     				<ul>
-<li><a href="{{ path('chiave_static', { slug: '_home'} ) }}">Strona główna</a></li>
+<li><a href="{{ path('chiave_gallery_frontend_categories') }}">Strona główna</a></li>
 <li><a href="{{ path('chiave_static', { slug: '_oFirmie'} ) }}">O firmie</a></li>
 <li><a href="{{ path('chiave_static', { slug: '_produkty'} ) }}">Produkty</a></li>
 <li><a href="{{ path('chiave_static', { slug: '_cennik'} ) }}">Cennik</a></li>
@@ -41,7 +41,7 @@
        		 </div>
         </div> <!-- end div page -->
 
-       
+
         <script>
         	$(document).ready(function(){
             	$('.verticalMenu li').hover(function(){
@@ -52,7 +52,7 @@
             });
         </script>
         {% block javascripts %} {% endblock %}
-       
+
 
     </body>
 </html>
