@@ -1,20 +1,21 @@
-chiave_static:
-    resource: "@ChiaveStaticBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
 login_check:
     path:   /login_check
 
 logout:
     path:   /logout
 
-chiave_core_bundle:
-    resource: "@ChiaveCoreBundle/Controller"
-    prefix:   /
-    type:     annotation
-
 chiave_gallery:
     resource: "@ChiaveGalleryBundle/Controller"
+    type:     annotation
+    prefix:   /
+
+chiave_core_bundle:
+    resource: "@ChiaveCoreBundle/Controller"
+    type:     annotation
+    prefix:   /
+
+#must be last!
+chiave_static:
+    resource: "@ChiaveStaticBundle/Controller/"
     type:     annotation
     prefix:   /

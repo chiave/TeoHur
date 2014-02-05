@@ -6,9 +6,11 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-use Chiave\GalleryBundle\Entity\Categories;
+use Doctrine\ORM\EntityRepository;
 
-class CategoriesType extends AbstractType
+use Chiave\GalleryBundle\Entity\Items;
+
+class ItemsType extends AbstractType
 {
         /**
      * @param FormBuilderInterface $builder
@@ -16,11 +18,22 @@ class CategoriesType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $now = new \DateTime('now');
         $builder
+            ->add('productKey')
             ->add('name')
+            ->add('category', 'entity', array(
+                    'class' => 'ChiaveGalleryBundle:Categories',
+                    'query_builder' => function(EntityRepository $er) {
+                        return $er->createQueryBuilder('f')
+                            ->orderBy('f.name', 'ASC');
+                    },
+                    'required' => false,
+                )
+            )
             ->add('description')
+
             ->add('file', new FilesType())
+
             ->add('submit',
                 'submit',
                 array(
@@ -36,7 +49,7 @@ class CategoriesType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Chiave\GalleryBundle\Entity\Categories'
+            'data_class' => 'Chiave\GalleryBundle\Entity\Items'
         ));
     }
 
@@ -45,6 +58,6 @@ class CategoriesType extends AbstractType
      */
     public function getName()
     {
-        return 'chiave_gallerybundle_categories';
+        return 'chiave_gallerybundle_items';
     }
 }

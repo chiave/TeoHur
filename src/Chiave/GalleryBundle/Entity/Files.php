@@ -26,48 +26,6 @@ class Files
     private $id;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(
-     *     name="product_key",
-     *     type="integer",
-     *     unique=true
-     * )
-     */
-    private $productKey;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=255)
-     */
-    private $name;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="description", type="text", nullable=true)
-     */
-    private $description;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Categories", inversedBy="files")
-     * @ORM\JoinColumn(
-     *     name="category_id",
-     *     referencedColumnName="id",
-     *     nullable=false
-     * )
-     **/
-    private $category;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="visible", type="boolean", nullable=true)
-     */
-    private $visible = false;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="serverName", type="string", length=255, nullable=true)
@@ -108,6 +66,18 @@ class Files
     private $size;
 
     /**
+     * @ORM\OneToOne(targetEntity="Items", inversedBy="file")
+     * @ORM\JoinColumn(name="item_id", referencedColumnName="id", nullable=true)
+     */
+    private $item;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Categories", inversedBy="file")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id", nullable=true)
+     */
+    private $category;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="createdAt", type="datetime")
@@ -123,12 +93,6 @@ class Files
 
     private $temp;
 
-
-    public function __toString()
-    {
-        return $this->name . ' (.' . $this->getExtension() . ')';
-    }
-
     /**
      * Get id
      *
@@ -140,72 +104,26 @@ class Files
     }
 
     /**
-     * Set productKey
+     * Set serverName
      *
-     * @param integer $productKey
+     * @param string $serverName
      * @return Files
      */
-    public function setProductKey($productKey)
+    public function setServerName($serverName)
     {
-        $this->productKey = $productKey;
+        $this->serverName = $serverName;
 
         return $this;
     }
 
     /**
-     * Get productKey
-     *
-     * @return integer
-     */
-    public function getProductKey()
-    {
-        return $this->productKey;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return Files
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
+     * Get serverName
      *
      * @return string
      */
-    public function getName()
+    public function getServerName()
     {
-        return $this->name;
-    }
-
-    /**
-     * Set visible
-     *
-     * @param boolean $visible
-     * @return Files
-     */
-    public function setVisible($visible)
-    {
-        $this->visible = $visible;
-
-        return $this;
-    }
-
-    /**
-     * Get visible
-     *
-     * @return boolean
-     */
-    public function getVisible()
-    {
-        return $this->visible;
+        return $this->serverName;
     }
 
     public function getAbsolutePath()
@@ -438,6 +356,52 @@ class Files
     }
 
     /**
+     * Set item
+     *
+     * @param \Chiave\GalleryBundle\Entity\Items $item
+     * @return Files
+     */
+    public function setItem(\Chiave\GalleryBundle\Entity\Items $item = null)
+    {
+        $this->item = $item;
+
+        return $this;
+    }
+
+    /**
+     * Get item
+     *
+     * @return \Chiave\GalleryBundle\Entity\Items
+     */
+    public function getItem()
+    {
+        return $this->item;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \Chiave\GalleryBundle\Entity\Categories $category
+     * @return Files
+     */
+    public function setCategory(\Chiave\GalleryBundle\Entity\Categories $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \Chiave\GalleryBundle\Entity\Categories
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
      * Set createdAt
      *
      * @param \DateTime $createdAt
@@ -498,74 +462,5 @@ class Files
     public function setUpdatedTimestamps()
     {
         $this->updatedAt = new \DateTime('now');
-    }
-
-    /**
-     * Set description
-     *
-     * @param string $description
-     * @return Files
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * Set category
-     *
-     * @param \Chiave\GalleryBundle\Entity\Categories $category
-     * @return Files
-     */
-    public function setCategory(\Chiave\GalleryBundle\Entity\Categories $category)
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
-    /**
-     * Get category
-     *
-     * @return \Chiave\GalleryBundle\Entity\Categories
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
-
-    /**
-     * Set serverName
-     *
-     * @param string $serverName
-     * @return Files
-     */
-    public function setServerName($serverName)
-    {
-        $this->serverName = $serverName;
-
-        return $this;
-    }
-
-    /**
-     * Get serverName
-     *
-     * @return string
-     */
-    public function getServerName()
-    {
-        return $this->serverName;
     }
 }

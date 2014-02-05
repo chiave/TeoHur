@@ -5,13 +5,13 @@ namespace Chiave\GalleryBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Category
+ * Files
  *
- * @ORM\Table(name="chiave_gallery_categories")
+ * @ORM\Table(name="chiave_gallery_items")
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class Categories
+class Items
 {
     /**
      * @var integer
@@ -23,6 +23,16 @@ class Categories
     private $id;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(
+     *     name="product_key",
+     *     type="integer"
+     * )
+     */
+    private $productKey;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
@@ -32,20 +42,25 @@ class Categories
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 
     /**
-     * @ORM\OneToOne(targetEntity="Files", mappedBy="category", cascade={"all"})
+     * @ORM\ManyToOne(targetEntity="Categories", inversedBy="files")
+     * @ORM\JoinColumn(
+     *     name="category_id",
+     *     referencedColumnName="id",
+     *     nullable=false
+     * )
+     **/
+    private $category;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Files", mappedBy="item", cascade={"all"})
      * @ORM\JoinColumn(name="file_id", referencedColumnName="id", nullable=true)
      */
     private $file;
-
-    /**
-     * @ORM\OneToMany(targetEntity="Items", mappedBy="category")
-     **/
-    private $items;
 
     /**
      * @var \DateTime
@@ -61,10 +76,12 @@ class Categories
      */
     private $updatedAt;
 
+    private $temp;
+
 
     public function __toString()
     {
-        return $this->name;
+        return $this->name . ' (.' . $this->getExtension() . ')';
     }
 
     /**
@@ -78,10 +95,33 @@ class Categories
     }
 
     /**
+     * Set productKey
+     *
+     * @param integer $productKey
+     * @return Files
+     */
+    public function setProductKey($productKey)
+    {
+        $this->productKey = $productKey;
+
+        return $this;
+    }
+
+    /**
+     * Get productKey
+     *
+     * @return integer
+     */
+    public function getProductKey()
+    {
+        return $this->productKey;
+    }
+
+    /**
      * Set name
      *
      * @param string $name
-     * @return Categories
+     * @return Files
      */
     public function setName($name)
     {
@@ -104,7 +144,7 @@ class Categories
      * Set description
      *
      * @param string $description
-     * @return Categories
+     * @return Files
      */
     public function setDescription($description)
     {
@@ -122,24 +162,40 @@ class Categories
     {
         return $this->description;
     }
+
     /**
-     * Constructor
+     * Set category
+     *
+     * @param \Chiave\GalleryBundle\Entity\Categories $category
+     * @return Files
      */
-    public function __construct()
+    public function setCategory(\Chiave\GalleryBundle\Entity\Categories $category)
     {
-        $this->files = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \Chiave\GalleryBundle\Entity\Categories
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 
     /**
      * Set file
      *
      * @param \Chiave\GalleryBundle\Entity\Files $file
-     * @return Categories
+     * @return Items
      */
     public function setFile(\Chiave\GalleryBundle\Entity\Files $file = null)
     {
         $this->file = $file;
-        $this->file->setCategory($this);
+        $this->file->setItem($this);
 
         return $this;
     }
@@ -152,39 +208,6 @@ class Categories
     public function getFile()
     {
         return $this->file;
-    }
-
-    /**
-     * Add items
-     *
-     * @param \Chiave\GalleryBundle\Entity\Items $items
-     * @return Categories
-     */
-    public function addItem(\Chiave\GalleryBundle\Entity\Items $items)
-    {
-        $this->items[] = $items;
-
-        return $this;
-    }
-
-    /**
-     * Remove items
-     *
-     * @param \Chiave\GalleryBundle\Entity\Items $items
-     */
-    public function removeItem(\Chiave\GalleryBundle\Entity\Items $items)
-    {
-        $this->items->removeElement($items);
-    }
-
-    /**
-     * Get items
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getItems()
-    {
-        return $this->items;
     }
 
     /**
@@ -223,7 +246,7 @@ class Categories
      * Set updatedAt
      *
      * @param \DateTime $updatedAt
-     * @return Categories
+     * @return Pages
      */
     public function setUpdatedAt($updatedAt)
     {

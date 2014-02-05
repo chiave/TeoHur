@@ -7,6 +7,17 @@
 
 {% block body -%}
 
+{#    {{ form_start(form) }}
+         {{ form_row(form.name) }}
+        {{ form_row(form.description) }}
+        {{ form_row(form.file) }}
+
+        <ul class="tags">
+            {% for filex in form.file %}
+            <li>{{ form_row(filex.file) }}</li>
+            {% endfor %}
+        </ul>
+    {{ form_end(form) }} #}
     {{ form(form) }}
 
     <a class="small button" href="{{ path('chiave_gallery_categories') }}">

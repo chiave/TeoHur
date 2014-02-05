@@ -6,10 +6,6 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-use Doctrine\ORM\EntityRepository;
-
-use Chiave\GalleryBundle\Entity\Files;
-
 class FilesType extends AbstractType
 {
         /**
@@ -18,28 +14,8 @@ class FilesType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $now = new \DateTime('now');
         $builder
-            ->add('productKey')
-            ->add('name')
-            ->add('category', 'entity', array(
-                    'class' => 'ChiaveGalleryBundle:Categories',
-                    'query_builder' => function(EntityRepository $er) {
-                        return $er->createQueryBuilder('f')
-                            ->orderBy('f.name', 'ASC');
-                    },
-                    'required' => false,
-                )
-            )
-            ->add('description')
-            ->add('visible')
             ->add('file')
-            ->add('submit',
-                'submit',
-                array(
-                    'label' => 'Wyślij'
-                )
-            )
         ;
     }
 

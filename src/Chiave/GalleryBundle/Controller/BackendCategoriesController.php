@@ -13,6 +13,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Chiave\GalleryBundle\Entity\Categories;
+use Chiave\GalleryBundle\Entity\Files;
 use Chiave\GalleryBundle\Form\CategoriesType;
 
 /**
@@ -52,6 +53,8 @@ class BackendCategoriesController extends Controller
     public function createAction(Request $request)
     {
         $category = new Categories();
+        $category->setFile(new Files());
+
         $form = $this->createCategoryForm(
             $category,
             'chiave_gallery_categories_create'
@@ -87,6 +90,8 @@ class BackendCategoriesController extends Controller
     public function newAction(Request $request)
     {
         $category = new Categories();
+        $category->setFile(new Files());
+
         $form = $this->createCategoryForm(
             $category,
             'chiave_gallery_categories_create'

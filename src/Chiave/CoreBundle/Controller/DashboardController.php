@@ -37,6 +37,7 @@ class DashboardController extends Controller
      * login Action
      *
      * @Route("/login", name="login")
+     * @Template()
      */
     public function loginAction(Request $request)
     {
@@ -52,13 +53,9 @@ class DashboardController extends Controller
             $session->remove(SecurityContext::AUTHENTICATION_ERROR);
         }
 
-        return $this->render(
-            'ChiaveCoreBundle:Dashboard:login.html.twig',
-            array(
-                // last username entered by the user
+        return array(
                 'last_username' => $session->get(SecurityContext::LAST_USERNAME),
                 'error'         => $error,
-            )
-        );
+            );
     }
 }

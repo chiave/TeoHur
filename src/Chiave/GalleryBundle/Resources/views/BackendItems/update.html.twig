@@ -3,13 +3,13 @@
 {% block title %}Zarządzanie produktami{% endblock %}
 {% block description %}tworzenie/edycja produktu{% endblock %}
 
-{% block active_name %}chiave_gallery_files{% endblock %}
+{% block active_name %}chiave_gallery_items{% endblock %}
 
 {% block body -%}
 
     {{ form(form) }}
 
-    <a class="small button" href="{{ path('chiave_gallery_files') }}">
+    <a class="small button" href="{{ path('chiave_gallery_items') }}">
         Powrót do listy produktów
     </a>
 
