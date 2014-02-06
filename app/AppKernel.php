@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new Chiave\CoreBundle\ChiaveCoreBundle(),
             new Chiave\GalleryBundle\ChiaveGalleryBundle(),
             new Chiave\StaticBundle\ChiaveStaticBundle(),
+            new Chiave\ContactBundle\ChiaveContactBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

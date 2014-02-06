@@ -1,0 +1,36 @@
+{% form_theme form 'ChiaveContactBundle:Frontend:contactForm.html.twig' %}
+
+<div class="contactForm">
+    {{ form(form) }}
+</div>
+
+<script>
+    $('form').submit(function(e) {
+        e.preventDefault();
+        var form = $(this);
+        var formId = $(this).parent().attr('id');
+        var type;
+        if (formId == 'contactForm') {
+            type = 'contact';
+        } else if (formId == 'raportForm') {
+            type = 'raport';
+        }
+
+        var url = "{{ path('chiave_contact_persist') }}";
+        $.post(
+            url,
+            $(this).serialize(),
+            function(data) {
+                console.log(data);
+                $('.form-msg').remove();
+                if (data.success) {
+                    $(form)[0].reset();
+                    $(form).before('<p class="form-msg form-success">Wiadomość została wysłana poprawnie.</p>');
+                } else {
+                    $(form).before('<p class="form-msg form-error">Coś poszło nie tak. Spróbuj ponownie później.</p>');
+                }
+            }
+        );
+
+    });
+</script>

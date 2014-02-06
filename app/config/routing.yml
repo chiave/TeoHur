@@ -4,18 +4,23 @@ login_check:
 logout:
     path:   /logout
 
-chiave_gallery:
-    resource: "@ChiaveGalleryBundle/Controller"
+chiave_contact_bundle:
+    resource: "@ChiaveContactBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+chiave_gallery_bundle:
+    resource: "@ChiaveGalleryBundle/Controller/"
     type:     annotation
     prefix:   /
 
 chiave_core_bundle:
-    resource: "@ChiaveCoreBundle/Controller"
+    resource: "@ChiaveCoreBundle/Controller/"
     type:     annotation
     prefix:   /
 
 #must be last!
-chiave_static:
+chiave_static_bundle:
     resource: "@ChiaveStaticBundle/Controller/"
     type:     annotation
     prefix:   /
