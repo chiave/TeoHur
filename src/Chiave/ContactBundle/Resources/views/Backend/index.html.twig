@@ -1,0 +1,42 @@
+{% extends "::back.html.twig" %}
+
+{% block title %}Otrzymane wiadomości{% endblock %}
+{% block description %}lista wiadomości{% endblock %}
+
+{% block active_name %}chiave_contact_contacts{% endblock %}
+
+
+{% block body -%}
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Lp.</th>
+                <th>Nadawca</th>
+                <th>E-mail</th>
+                <th>Telefon</th>
+                <th>Z dnia</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contact in contacts %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ contact.firstname }} {{ contact.lastname }}</td>
+                <td>{{ contact.email }}</td>
+                <td>{{ contact.phone }}</td>
+                <td>{{ contact.createdAt|date('Y-m-d H:i:s') }}</td>
+                <td>
+                    <div class="button-bar">
+                        <ul class="button-group">
+                            <li><a class="tiny button" href="{{ path('chiave_contact_show', { 'id': contact.id }) }}">Pokaż</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

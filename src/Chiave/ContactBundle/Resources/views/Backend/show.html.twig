@@ -1,0 +1,42 @@
+{% extends "::back.html.twig" %}
+
+{% block title %}Otrzymane wiadomości{% endblock %}
+{% block description %}podgląd wiadomości{% endblock %}
+
+{% block active_name %}chiave_contact_contacts{% endblock %}
+
+
+{% block body -%}
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ contact.id }}</td>
+            </tr>
+            <tr>
+                <th>Nadawca</th>
+                <td>{{ contact.firstname }}</td>
+            </tr>
+            <tr>
+                <th>E-mail</th>
+                <td>{{ contact.email }}</td>
+            </tr>
+            <tr>
+                <th>Telefon</th>
+                <td>{{ contact.phone }}</td>
+            </tr>
+            <tr>
+                <th>Utworzony</th>
+                <td>{{ contact.createdAt|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Wiadomość</th>
+                <td>{{ contact.message | escape }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <a class="button small" href="{{ path('chiave_contact_contacts') }}">
+        Powrót do listy wiadomości
+    </a>
+{% endblock %}
