@@ -43,15 +43,18 @@
 
 
         <script>
+        
         	$(document).ready(function(){
             	$('.verticalMenu li').hover(function(){
                 	$(this).animate({paddingLeft: '+=10px'}, 400);
                 	}, function() {
                     	$(this).animate({paddingLeft: '-=10px'}, 400);
                 	});
+
+            	{% block javascripts %} {% endblock %}
             });
         </script>
-        {% block javascripts %} {% endblock %}
+       
 
 
     </body>

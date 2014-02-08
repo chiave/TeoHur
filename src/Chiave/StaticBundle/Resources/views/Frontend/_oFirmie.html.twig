@@ -9,12 +9,30 @@
 
 	<div class="mainParagraph">
 	<p>"F.H.P.U TEOFIL" - firma oparta na tradycjach rodzinnych, wywodzi się ze słynnych żurowskich wytwórców galanterii i bednarstwa. Zajmuje się produkcją i dystrybucją wszelkiego rodzaju wyrobów użytkowych z drewna niezbędnych w każdym gospodarstwie domowym. </p>
-	<div class="fader">
-		<img src="{{ asset('images/037.jpg') }}" />
-		<img src="{{ asset('images/052.jpg') }}" />
-		<img src="{{ asset('images/064.jpg') }}" />
-		<img src="{{ asset('images/041.jpg') }}" />
-	</div>
+	
+	<div id="slider">
+	    <div class="item show">
+	       <img src="{{ asset('images/037.jpg') }}" />
+	        <h1>Nazwa produktu1</h1>
+	        <p>Krótki opis produktu, Krótki opis produktu, Krótki opis produktu</p>
+	    </div>
+	     <div class="item">
+	       <img src="{{ asset('images/052.jpg') }}" />
+	        <h1>Nazwa produktu2</h1>
+	        <p>Krótki opis produktu2, Krótki opis produktu2, Krótki opis produktu2</p>
+	    </div>
+	    <div class="item">
+	     <img src="{{ asset('images/064.jpg') }}" />
+	        <h1>Nazwa produktu2</h1>
+	        <p>Krótki opis produktu3, Krótki opis produktu3, Krótki opis produktu3</p>
+	    </div>
+	    <div class="item">
+	      <img src="{{ asset('images/041.jpg') }}" />
+	        <h1>Nazwa produktu4</h1>
+	        <p>Krótki opis produktu2, Krótki opis produktu4, Krótki opis produktu4</p>
+	    </div>
+	 </div><!-- end div slider -->
+	
 	<p> Jesteśmy od wielu już lat producentem artykułów gospodarstwa domowego z drewna. Są to: deski do krojenia o różnym kształcie, widelce drewniane, nożyki do masła, wałki do ciasta, deski do mięsa, młotki do mięsa, tłuczki, łyżki o dowolnych kształtach, łopatki, nożyki, stojaki, tace, wieszaki i wiele innych. Wyroby z drewna są ekologiczne i estetyczne. </p>
 	<p>Można bez żadnych obaw używać je do kontaktu z żywnością. Mogą one być elementami wyposażenia naszych kuchni, stylowych restauracji, barów oraz pensjonatów.  </p>
 	</div><!-- end mainParagraph -->
@@ -24,8 +42,17 @@
 
 
  {% block javascripts %}
- <script>
+slideShow();
  
- </script>
+ function slideShow(){
+     var current = $('#slider .show');
+     var next = current.next().length ? current.next() : current.parent().children(':first');
+     var h = $(next).height();
+     next.parent().css('height', h);
+     current.fadeOut(2000).removeClass('show');
+     next.fadeIn(2000).addClass('show');
+     setTimeout(slideShow, 6000);
+ };
+
 {% endblock %} 
 
