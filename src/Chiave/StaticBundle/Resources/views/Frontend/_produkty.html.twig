@@ -1,13 +1,110 @@
 {% extends '::front.html.twig' %}
 {% block title %}
-     Strona główna
+     Produkty
 {% endblock %}
 
 {% block mainSide %}
 
-produkty
+<div class="minsWrapper">
+	<img id="slideLeft" src="{{ asset('images/slide_left.png') }}" />
+	<img id="slideRight" src="{{ asset('images/slide_right.png') }}" />
+    <div class="minsInner">
+         <img src="{{ asset('images/037.jpg') }}" />
+         <img src="{{ asset('images/052.jpg') }}" />
+         <img src="{{ asset('images/064.jpg') }}" />
+         <img src="{{ asset('images/041.jpg') }}" />
+         <img src="{{ asset('images/037.jpg') }}" />
+         <img src="{{ asset('images/052.jpg') }}" />
+         <img src="{{ asset('images/064.jpg') }}" />
+         <img src="{{ asset('images/041.jpg') }}" />
+         <img src="{{ asset('images/037.jpg') }}" />
+         <img src="{{ asset('images/052.jpg') }}" />
+         <img src="{{ asset('images/064.jpg') }}" />
+         <img src="{{ asset('images/041.jpg') }}" />
+         <img src="{{ asset('images/037.jpg') }}" />
+         <img src="{{ asset('images/052.jpg') }}" />
+         <img src="{{ asset('images/064.jpg') }}" />
+         <img src="{{ asset('images/041.jpg') }}" />
+         <img src="{{ asset('images/064.jpg') }}" />
+         <img src="{{ asset('images/041.jpg') }}" />
+         <img src="{{ asset('images/037.jpg') }}" />
+         <img src="{{ asset('images/052.jpg') }}" />
+         <img src="{{ asset('images/064.jpg') }}" />
+         <img src="{{ asset('images/041.jpg') }}" />
+    </div>
+</div>
 
 {% endblock %}
 
 
 
+{% block javascripts %}
+
+  scroll();
+  
+  function scroll()
+    {
+    	var itemSize = $('.minsInner img').length;
+    	$('.minsInner').css('width', itemSize * ($('.minsInner img').width() + 6));
+    	
+    	
+    	var isAnimated = false;
+    	$('#slideRight').click(function(){	
+    		if(isAnimated)
+    			return;
+    		else
+    		{
+    			isAnimated = true;
+	    		var minList =  $(this).parent().children('.minsInner');
+	    		var scrollAmount = minList.width()-$(this).parent().width();
+	    		var currentPos = Math.abs(parseInt($(minList).css('left')));
+	    		var remainingScroll = scrollAmount - currentPos;
+	    		
+	    		var nextScroll = $(this).parent().width();
+	    		
+	    		if(remainingScroll <= nextScroll){
+	    		
+	    			nextScroll = remainingScroll;
+	    			$(this).fadeOut(1000); 
+	    			
+	    		}
+	    		
+	    		if(currentPos < scrollAmount){
+	    			$(minList).animate({'left':'-=' + nextScroll}, 1000);
+	    		}
+	    		 $(this).parent().children('#slideLeft').fadeIn(1000);
+	    		 setTimeout(function(){
+	    			 isAnimated = false;
+	    		 }, 1000);
+    		}
+    	});
+    	
+    	$('#slideLeft').click(function(){ 
+    		if(isAnimated)
+    			return;
+    		else{
+    			isAnimated = true;
+	            var minList =  $(this).parent().children('.minsInner');
+	            var scrollAmount = minList.width()-$(this).parent().width();
+	            var currentPos = Math.abs(parseInt($(minList).css('left')));
+	            var remainingScroll = currentPos;
+	            
+	            var nextScroll = $(this).parent().width();
+	            if(remainingScroll <= nextScroll){
+	                nextScroll = remainingScroll;
+	                $(this).fadeOut(1000);  
+	            }
+	            
+	            if(currentPos >= 50){
+	                $(minList).animate({'left':'+=' + nextScroll}, 1000);
+	            }
+	            $(this).parent().children('#slideRight').fadeIn(1000);
+	            setTimeout(function(){
+                    isAnimated = false;
+                }, 1000);
+	    		}
+	       });
+    };
+    
+    
+{% endblock %}

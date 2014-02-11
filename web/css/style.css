@@ -269,3 +269,92 @@ ul.arrowList li
     color:white;
 }
 /*--------------------------------------end slider -----------------------------------*/
+
+/*--------------------- styles for gallery----------------------------------------- */
+
+.minsWrapper
+{
+    
+    overflow: hidden;
+    height:120px;
+    margin:0px auto;
+    width:700px;
+    position: relative;
+    
+    
+}
+.minsInner
+{
+    width:1200px;
+    overflow:hidden;
+    position: relative;
+    position:absolute;
+    top:0px;
+    height:100px;
+    left:0px;
+}
+
+.minsInner img
+{
+    float: left;
+    width:94px;
+    height:92px;
+    padding:6px 3px;
+    display:block;
+    background:rgb(8, 189, 174);
+    
+}
+
+#slideLeft
+{
+	position:absolute;
+	left:0px;
+	top:40px;
+	z-index:1;
+	width:20px;
+	height:20px;
+	opacity:0.5;
+}
+
+#slideLeft:HOVER {
+	opacity:0.8;
+}
+
+#slideRight
+{
+    position:absolute;
+    right:0px;
+    top:40px;
+    z-index:1;
+    width:20px;
+    height:20px;
+    opacity:0.5;
+}
+#slideRight:HOVER {
+    opacity:0.8;
+}
+
+@media all and (max-width: 299px) {
+    .minsWrapper{
+    width:200px;
+    }
+}
+
+@media all and (min-width: 300px) and (max-width: 399px) {
+    .minsWrapper{
+    width:300px;
+    }
+}
+@media all and (min-width: 400px) and (max-width: 499px) {
+    .minsWrapper{
+    width:400px;
+    }
+}
+@media all and (min-width: 500px) and (max-width: 899px) {
+    .minsWrapper{
+    width:500px;
+    }
+}
+
+
+/*--------------------------end styles for gallery--------------------------------*/
