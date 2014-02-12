@@ -269,3 +269,123 @@ ul.arrowList li
     color:white;
 }
 /*--------------------------------------end slider -----------------------------------*/
+
+/*--------------------- styles for gallery----------------------------------------- */
+
+.minsWrapper
+{
+    
+    overflow: hidden;
+    height:120px;
+    margin:0px auto;
+    width:700px;
+    position: relative;
+    
+    
+}
+.minsInner
+{
+    width:1200px;
+    overflow:hidden;
+    position: relative;
+    position:absolute;
+    top:0px;
+    height:100px;
+    left:0px;
+}
+
+.minsInner img
+{
+    float: left;
+    width:94px;
+    height:92px;
+    padding:6px 3px;
+    display:block;
+    background:rgb(8, 189, 174);
+    
+}
+
+#slideLeft
+{
+	position:absolute;
+	left:0px;
+	top:40px;
+	z-index:1;
+	width:20px;
+	height:20px;
+	opacity:0.5;
+}
+
+#slideLeft:HOVER {
+	opacity:0.8;
+}
+
+#slideRight
+{
+    position:absolute;
+    right:0px;
+    top:40px;
+    z-index:1;
+    width:20px;
+    height:20px;
+    opacity:0.5;
+}
+#slideRight:HOVER {
+    opacity:0.8;
+}
+
+@media all and (max-width: 299px) {
+    .minsWrapper{
+    width:200px;
+    }
+}
+
+@media all and (min-width: 300px) and (max-width: 399px) {
+    .minsWrapper{
+    width:300px;
+    }
+}
+@media all and (min-width: 400px) and (max-width: 499px) {
+    .minsWrapper{
+    width:400px;
+    }
+}
+@media all and (min-width: 500px) and (max-width: 899px) {
+    .minsWrapper{
+    width:500px;
+    }
+}
+
+/* -----------------lightBox------------------------*/ 
+.lightboxContainer
+{
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:3;
+    width:90%;
+    height:90%;
+    margin:5%;
+    background:rgb(196, 196, 196);
+    border-radius:5px;
+    border:1px solid rgb(169, 170, 167);
+}
+.lightboxContainer img
+{
+    max-width:100%;
+    height:60%;
+    margin:10% auto;
+    display:block;
+}
+.lightboxWrapper
+{
+    position:absolute;
+    top:0px;
+    left:0px;
+    height: 100%;
+    width: 100%;
+    background:grey;
+    z-index:2;
+}
+
+/*--------------------------end styles for gallery--------------------------------*/
