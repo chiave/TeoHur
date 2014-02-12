@@ -9,10 +9,10 @@
 	<img id="slideLeft" src="{{ asset('images/slide_left.png') }}" />
 	<img id="slideRight" src="{{ asset('images/slide_right.png') }}" />
     <div class="minsInner">
-         <a href="{{ asset('images/037.jpg') }}" class="lightbox"><img src="{{ asset('images/037.jpg') }}" /></a>
-         <a href="{{ asset('images/052.jpg') }}" class="lightbox"> <img src="{{ asset('images/052.jpg') }}" /></a>
-         <a href="{{ asset('images/064.jpg') }}" class="lightbox"><img src="{{ asset('images/064.jpg') }}" /></a>
-         <a href="{{ asset('images/041.jpg') }}" class="lightbox"> <img src="{{ asset('images/041.jpg') }}" /></a>
+         <a href="{{ asset('images/037.jpg') }}" data-productName="Wiadro" data-description="Testowy opis produktu wiadro" data-index="000" class="lightbox"><img src="{{ asset('images/037.jpg') }}" /></a>
+         <a href="{{ asset('images/052.jpg') }}" data-productName="Łyszki :D" data-description="Testowy opis produktu łyszka" data-index="6789" class="lightbox"> <img src="{{ asset('images/052.jpg') }}" /></a>
+         <a href="{{ asset('images/064.jpg') }}" data-productName="Deski" data-description="Testowy opis produktu deszki" data-index="234345" class="lightbox"><img src="{{ asset('images/064.jpg') }}" /></a>
+         <a href="{{ asset('images/041.jpg') }}" data-productName="Spinatrze :p" data-description="Testowy opis produktu szpinaki" data-index="1" class="lightbox"> <img src="{{ asset('images/041.jpg') }}" /></a>
            <a href="{{ asset('images/037.jpg') }}" class="lightbox"><img src="{{ asset('images/037.jpg') }}" /></a>
          <a href="{{ asset('images/052.jpg') }}" class="lightbox"> <img src="{{ asset('images/052.jpg') }}" /></a>
          <a href="{{ asset('images/064.jpg') }}" class="lightbox"><img src="{{ asset('images/064.jpg') }}" /></a>
@@ -106,19 +106,21 @@
 	       });
     };
     
-    function lightbox()
+   function lightbox()
     {
     	$('a.lightbox').click(function(e){
     		$('body').css('overflow-y', 'hidden');
     		$('<div class="lightboxWrapper"></div>')
     		.css('top', $(document).scrollTop())
     		.css('opacity', '0')
-    		.animate({'opacity': '0.7'}, 'fast')
+    		.animate({'opacity': '0.9'}, 'fast')
     		.appendTo('body');
     		
     		$('<div class="lightboxContainer"></div>')
     		.hide()
     		.appendTo('body');
+    		
+    		addInfo($(this));
     		
     		$('<img />')
     		.attr('src', $(this).attr('href')).appendTo('.lightboxContainer')
@@ -138,6 +140,24 @@
     			$(this).remove();
     			$('body').css('overflow-y', 'auto');
     		});
+    	}
+    	function addInfo(object)
+    	{
+    		var name = $(object).attr('data-productName');
+    		if(!(name))
+    			  name='';
+    		var description = $(object).attr('data-description');
+    		if(!(description))
+               description='';
+    		var index = $(object).attr('data-index');
+    		if(!(index))
+                index='';
+    		$('.lightboxContainer').html(
+    				'<div class="lbHeader">' + name + '</div>' +
+    				'<div class="lbDescription">' + description + '</div>' +
+    				'<div class="lbIndex">' + index + '</div>'
+    		);
+    				
     	}
     };
     
