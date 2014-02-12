@@ -356,5 +356,36 @@ ul.arrowList li
     }
 }
 
+/* -----------------lightBox------------------------*/ 
+.lightboxContainer
+{
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:3;
+    width:90%;
+    height:90%;
+    margin:5%;
+    background:rgb(196, 196, 196);
+    border-radius:5px;
+    border:1px solid rgb(169, 170, 167);
+}
+.lightboxContainer img
+{
+    max-width:100%;
+    height:60%;
+    margin:10% auto;
+    display:block;
+}
+.lightboxWrapper
+{
+    position:absolute;
+    top:0px;
+    left:0px;
+    height: 100%;
+    width: 100%;
+    background:grey;
+    z-index:2;
+}
 
 /*--------------------------end styles for gallery--------------------------------*/
