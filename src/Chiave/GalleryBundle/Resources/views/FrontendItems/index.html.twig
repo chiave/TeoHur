@@ -1,0 +1,20 @@
+{% extends '::front.html.twig' %}
+{% block title %}
+     Produkty
+{% endblock %}
+
+{% block mainSide %}
+<div class="minsWrapper">
+    <img src="/teohur/web/images/slide_left.png" id="slideLeft">
+    <img src="/teohur/web/images/slide_right.png" id="slideRight">
+    <div class="minsInner" style="width: 2000px;">
+        {% for item in items %}
+            <a class="lightbox" href="../{{ item.file.webPath }}"><img src="../{{ item.file.webPath }}"></a>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
+
+
+

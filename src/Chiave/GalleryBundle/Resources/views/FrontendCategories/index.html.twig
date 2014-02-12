@@ -7,11 +7,12 @@
 
  <div class="tilesWrapper">
     {% for category in categories %}
+    {% set color = random(3) %}
     <div class="tile">
-        <h1 class="brown">{{ category.name }}</h1>
+        <h1 class="background-{{ color }}">{{ category.name }} - {{category.id }}</h1>
         <img src="{{ category.file.webpath }}" alt="" />
         <p>{{ category.description }}</p>
-        <a class="brown" href="">Więcej</a>
+        <a class="background-{{ color }}" href="{{ path('chiave_gallery_frontend_items_find', { 'categoryId': category.id } ) }}">Więcej</a>
     </div>
     {% endfor %}
  </div>
