@@ -9,7 +9,7 @@
         	  <link rel="stylesheet" href="{{ asset('css/reset.css') }}" type="text/css" />
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-        <link href='http://fonts.googleapis.com/css?family=Titillium+Web&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+       <link href='http://fonts.googleapis.com/css?family=Alegreya&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <script src="{{ asset('js/jquery-1.11.0.min.js') }}"></script>
     </head>
     <body>
@@ -48,7 +48,7 @@
             	$('.verticalMenu li').hover(function(){
                 	$(this).animate({paddingLeft: '+=10px'}, 400);
                 	}, function() {
-                    	$(this).animate({paddingLeft: '-=10px'}, 400);
+                    	$(this).animate({paddingLeft: '-=10px'}, 50);
                 	});
 
             	{% block javascripts %} {% endblock %}

@@ -1,13 +1,14 @@
 {% extends '::front.html.twig' %}
 {% block title %}
-     Strona główna
+    Kontakt
 {% endblock %}
 
 {% block mainSide %}
 
-kontakt
 
+<div class="contactForm">
 {{ render(controller('ChiaveContactBundle:Frontend:renderForm')) }}
+</div>
 {% endblock %}
 
 
