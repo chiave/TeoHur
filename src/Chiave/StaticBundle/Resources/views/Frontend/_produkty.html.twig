@@ -109,7 +109,7 @@
    function lightbox()
     {
     	$('a.lightbox').click(function(e){
-    		$('body').css('overflow-y', 'hidden');
+    		$('body').css('overflow', 'hidden');
     		$('<div class="lightboxWrapper"></div>')
     		.css('top', $(document).scrollTop())
     		.css('opacity', '0')
@@ -125,7 +125,7 @@
     		$('<img />')
     		.attr('src', $(this).attr('href')).appendTo('.lightboxContainer')
     		.load(function(){
-    			$('.lightboxContainer') .fadeIn(1000);
+    			$('.lightboxContainer').css('top', $(document).scrollTop()).fadeIn(1000);
     		})
     		.click(function(){
     			removeLightbox();
