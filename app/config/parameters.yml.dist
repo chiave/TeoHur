@@ -1,11 +1,11 @@
 # This file is auto-generated during the composer install
 parameters:
     database_driver: pdo_mysql
-    database_host: mysql2.mydevil.net
+    database_host: localhost
     database_port: null
-    database_name: m13908_teohur
-    database_user: m13908_teohur
-    database_password: teohur
+    database_name: teohur
+    database_user: root
+    database_password: null
 
     # mailer_transport: smtp
     # mailer_encryption: ssl

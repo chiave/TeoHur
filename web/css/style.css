@@ -8,7 +8,7 @@ body, html
 #page
 {
 	width:100%;
-	font-family: 'Titillium Web', sans-serif;
+	font-family: 'Alegreya', sans-serif;
 	position: relative;
 	min-height: 100%;
 	overflow: hidden;
@@ -204,7 +204,7 @@ body, html
 
 .mainParagraph
 {
-    font-size: 20px;
+    font-size: 18px;
     text-align: justify;
     color:#805702;
     
@@ -222,16 +222,75 @@ ul.arrowList li
 	
 }
 
+/* -------------------------------contactForm--------------------------------*/
+.contactForm
+{
+	width:100%;
+	max-width:500px;
+}
+.contactForm input:FOCUS
+{
+	outline:none;
+}
+.contactForm input
+{
+	padding:3px 10px;
+	border-radius:5px;
+	
+	width:250px;
+	margin:5px auto;
+	display:block;
+}
+
+.contactForm textarea
+{
+	border-radius:5px;
+	margin:5px auto;
+	display:block;
+	padding:3px 10px;
+	width:100%;
+	max-width:470px;
+	border: 2px inset;
+	font: -webkit-small-control;
+	color: initial;
+	letter-spacing: normal;
+	word-spacing: normal;
+	text-transform: none;
+	text-indent: 0px;
+	text-shadow: none;
+}	
+.contactForm textarea:FOCUS
+{
+	outline:none;
+}
+.contactForm button
+{
+	display:block;
+	width:250px;
+	height:30px;
+	background:#7FE617;
+	border:2px solid #99FF31;
+	border-radius:3px;
+	color:white;
+	margin:10px auto;
+	
+	
+}
+/*--------------------------end contactForm-------------------------------------*/
+
 /*----------------------------- styles for slider -----------------------------------*/
 
 .slider
 {
     position:relative;
-    margin:15px 0px; 
+    margin:15px auto; 
+    max-width:500px;
 }
 .slider .item
 {
     width:100%;
+   
+    
     overflow: hidden;
     display: none;
     position:absolute;
@@ -253,8 +312,8 @@ ul.arrowList li
 .slider .item img
 {
     float:left;
-    width:300px;
-    height:230px;
+    width:200px;
+    height:170px;
     margin:7px;;
 }
 
@@ -416,3 +475,10 @@ ul.arrowList li
 
 
 /*--------------------------end styles for gallery--------------------------------*/
+
+.googleMap
+{
+	width:96%;
+	padding:2%;
+	min-height:400px;
+}
