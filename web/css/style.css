@@ -94,7 +94,7 @@ body, html
 	    padding-left:2%;
 	    text-align:left;
 	}
-	
+
 }
 #footer
 {
@@ -116,22 +116,22 @@ body, html
 .leftSide
 {
 	width:23%;
- 	padding-bottom:5px; 
+ 	padding-bottom:5px;
 	float:left;
-	
+
 }
 .mainSide
 {
 	width:77%;
 	float:left;
- 	padding-bottom: 70px; 
+ 	padding-bottom: 70px;
 }
 
 @media all and (max-width:600px) {
     .leftSide
     {
     width:100%;
-    float:none;  
+    float:none;
     }
     .mainSide
     {
@@ -142,7 +142,7 @@ body, html
 	{
 	   padding:10% 1%;
 	}
-	
+
 }
 
 
@@ -211,6 +211,7 @@ body, html
 	border-radius:2px;
 	margin-right:30px;
 }
+
 
 .tile .imgDiv 
 {
@@ -315,10 +316,10 @@ body, html
 {
 	 border: 0;
     height: 2px;
-    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(194, 112, 7, 0.75), rgba(0,0,0,0)); 
-    background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(194, 112, 7, 0.75), rgba(0,0,0,0)); 
-    background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(194, 112, 7, 0.75), rgba(0,0,0,0)); 
-    background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(194, 112, 7, 0.75), rgba(0,0,0,0)); 
+    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(194, 112, 7, 0.75), rgba(0,0,0,0));
+    background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(194, 112, 7, 0.75), rgba(0,0,0,0));
+    background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(194, 112, 7, 0.75), rgba(0,0,0,0));
+    background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(194, 112, 7, 0.75), rgba(0,0,0,0));
 }
 
 .mainContent p
@@ -332,19 +333,19 @@ body, html
     font-size: 18px;
     text-align: justify;
     color:#805702;
-    
+
 }
 
 ul.arrowList
 {
-	
+
 }
 ul.arrowList li
 {
 	background:url('../images/right_arrow.png') no-repeat;
 	background-position:0px 10px;
 	padding:10px 0px 10px 50px;
-	
+
 }
 
 /* -------------------------------contactForm--------------------------------*/
@@ -361,7 +362,7 @@ ul.arrowList li
 {
 	padding:3px 10px;
 	border-radius:5px;
-	
+
 	width:250px;
 	margin:5px auto;
 	display:block;
@@ -383,7 +384,7 @@ ul.arrowList li
 	text-transform: none;
 	text-indent: 0px;
 	text-shadow: none;
-}	
+}
 .contactForm textarea:FOCUS
 {
 	outline:none;
@@ -398,8 +399,8 @@ ul.arrowList li
 	border-radius:3px;
 	color:white;
 	margin:10px auto;
-	
-	
+
+
 }
 /*--------------------------end contactForm-------------------------------------*/
 
@@ -408,18 +409,17 @@ ul.arrowList li
 .slider
 {
     position:relative;
-    margin:15px auto; 
-    max-width:500px;
+    margin:15px 0px;
 }
 .slider .item
 {
     width:100%;
-   
-    
+
+
     overflow: hidden;
     display: none;
     position:absolute;
-    top:0px; 
+    top:0px;
     border-radius:3px;
 }
 .slider .item:FIRST-CHILD
@@ -458,14 +458,14 @@ ul.arrowList li
 
 .minsWrapper
 {
-    
+
     overflow: hidden;
     height:120px;
     margin:0px auto;
     width:700px;
     position: relative;
-    
-    
+
+
 }
 .minsInner
 {
@@ -486,7 +486,7 @@ ul.arrowList li
     padding:6px 3px;
     display:block;
     background:rgb(8, 189, 174);
-    
+
 }
 
 #slideLeft
@@ -540,7 +540,7 @@ ul.arrowList li
     }
 }
 
-/* -----------------lightBox------------------------*/ 
+/* -----------------lightBox------------------------*/
 .lightboxContainer
 {
     position:absolute;
@@ -624,10 +624,10 @@ ul.arrowList li
 	position: absolute;
 	z-index:2;
 }
-.selectList li:FIRST-CHILD 
-{	
+.selectList li:FIRST-CHILD
+{
 	display:block;
-	
+
 }
 .selectList li:FIRST-CHILD a
 {

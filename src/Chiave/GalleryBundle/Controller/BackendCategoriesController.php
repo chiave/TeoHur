@@ -207,7 +207,7 @@ class BackendCategoriesController extends Controller
     public function createCategoryForm(Categories $category, $route)
     {
         return $this->createForm(
-            new CategoriesType(),
+            new CategoriesType($category->getId()),
             $category,
             array(
                 'action' => $this->generateUrl(

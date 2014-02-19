@@ -43,6 +43,17 @@ class Categories
     private $file;
 
     /**
+     * @ORM\OneToMany(targetEntity="Categories", mappedBy="parent")
+     */
+    private $children;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Categories", inversedBy="children")
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
+     */
+    private $parent;
+
+    /**
      * @ORM\OneToMany(targetEntity="Items", mappedBy="category")
      **/
     private $items;
@@ -152,6 +163,62 @@ class Categories
     public function getFile()
     {
         return $this->file;
+    }
+
+    /**
+     * Add children
+     *
+     * @param \Chiave\GalleryBundle\Entity\Categories $children
+     * @return Categories
+     */
+    public function addChild(\Chiave\GalleryBundle\Entity\Categories $children)
+    {
+        $this->children[] = $children;
+
+        return $this;
+    }
+
+    /**
+     * Remove children
+     *
+     * @param \Chiave\GalleryBundle\Entity\Categories $children
+     */
+    public function removeChild(\Chiave\GalleryBundle\Entity\Categories $children)
+    {
+        $this->children->removeElement($children);
+    }
+
+    /**
+     * Get children
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    /**
+     * Set parent
+     *
+     * @param \Chiave\GalleryBundle\Entity\Categories $parent
+     * @return Categories
+     */
+    public function setParent(\Chiave\GalleryBundle\Entity\Categories $parent = null)
+    {
+        $this->parent = $parent;
+
+        return $this;
+    }
+
+    /**
+     * Get parent
+     *
+     * @return \Chiave\GalleryBundle\Entity\Categories
+     */
+    public function getParent()
+    {
+        return $this->parent;
     }
 
     /**
