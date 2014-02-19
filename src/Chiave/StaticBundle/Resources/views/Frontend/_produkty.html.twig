@@ -5,7 +5,79 @@
 
 {% block mainSide %}
 
-<div class="minsWrapper">
+<div class="selectList">
+ <ul>
+	<li><a>Wybierz kategorię</a></li>
+	<li><a>Ostatnio dodane</a></li>
+	<li><a href="">Akcesoria kuchenne</a></li>
+	<li><a href="">Akcesoria kuchenne z metalu</a></li>
+	<li><a href="">Chlebaki</a></li>
+	<li><a href="">Cukiernice kufle i naczynia drewniane</a></li>
+	<li><a href="">Czerpaki</a></li>
+	<li><a href="">Deski do krojenia</a></li>
+	<li><a href="">Deski do krojenia z rękojeścią</a></li>
+</ul>
+</div>
+<div class="chosenItem">Wybrano: <span>Łyżki</span> </div>
+
+<div class="separator"></div>
+
+<div class="tilesWrapper">
+
+<div class="toggleTile">
+	 <div class="tile">
+	 	 <div class="imgDiv"><img src="" alt="PHOTO" /></div>
+	 	  <h1>Nazwa kategorii</h1>
+	 	  <p>Opis kategorii, kilka słów o produkcie</p>
+	 	   <a>Więcej</a>
+	 </div><!-- end tile -->
+	   <div class="tileChildren">
+	   		 <div class="imgDiv"><img src="" alt="PHOTO" /></div>
+	   		 <div class="id">001</div>
+	   		 <h1>Nazwa produktu pierwszego</h1>
+	   		 <p>Opis produktu pierwszego</p>
+	   </div><!-- end tileChildren -->
+	    <div class="tileChildren">
+	    	<div class="imgDiv"><img src="" alt="PHOTO" /></div>
+	    	<div class="id">002</div>
+	    	<h1>Nazwa produktu drugiego</h1>
+	    	<p>Opis produktu drugiego</p>
+	   </div><!-- end tileChildren -->
+</div> <!--end togglTile -->
+
+	<div class="toggleTile">
+	    <div class="tile">
+	        <div class="imgDiv"><img src="{{ asset('images/036.jpg') }}" alt="" /></div>
+	         <h1>Łyżki okrągłe</h1>
+	        <p>Oferujemy Państwu łyżki szwedzkie, warszawskie, okrągłe i owalne, które z pewnością znajdą zastosowanie w każdej kuchni i nie tylko  </p>
+	        <a>Więcej</a>
+	    </div><!-- end tile -->
+	     <div class="tileChildren">
+	        	<div class="imgDiv"><img src="{{ asset('images/037.jpg') }}" alt="" /></div>
+	        	<div class="id">25</div>
+	         <h1> Łyżka okrągła </h1>
+	        <p>Łyżka okrągła wykonana z drewna bukowego długość łyżki 280 mm długość rączki 215 mm waga 0.020 kg </p>
+	      </div><!-- end tileChildren -->
+	       <div class="tileChildren">
+	        	<div class="imgDiv"><img src="{{ asset('images/037.jpg') }}" alt="" /></div>
+	        		<div class="id">26</div>
+	         <h1>Łyżka okrągła z rogiem i otworem </h1>
+	        <p> Łyżka okrągła z rogiem i otworem wykonana z drewna bukowego długość łyżki 280 mm długość rączki 215 mm waga 0.020 kg </p>
+	      </div><!-- end tileChildren -->
+	       <div class="tileChildren">
+	        	<div class="imgDiv"><img src="{{ asset('images/037.jpg') }}" alt="" /></div>
+	        	<div class="id">27</div>
+	         <h1> Łyżka okrągła z otworami </h1>
+	        <p>Łyżka okrągła z otworami wykonana z drewna bukowego długość łyżki 280 mm długość rączki 215 mm waga 0.020 kg </p>
+	      </div><!-- end tileChildren -->
+    </div><!-- end toggletile -->
+   
+    
+
+ </div><!-- end div tiles wrapper -->
+
+
+<!-- <div class="minsWrapper">
 	<img id="slideLeft" src="{{ asset('images/slide_left.png') }}" />
 	<img id="slideRight" src="{{ asset('images/slide_right.png') }}" />
     <div class="minsInner">
@@ -32,7 +104,7 @@
         
     </div>
 </div>
-
+ -->
 {% endblock %}
 
 
@@ -160,6 +232,15 @@
     				
     	}
     };
+    
+    $('.selectList li:FIRST-CHILD a').click(function(){
+    	$(this).parent().parent().children().slideDown(700);
+    });
+    
+    $('.toggleTile .tile a').click(function(){
+    	$(this).parent().parent().children('.tileChildren').slideDown(700);
+    	$(this).hide();
+    });
     
     
 {% endblock %}
