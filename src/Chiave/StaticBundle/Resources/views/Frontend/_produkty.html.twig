@@ -9,10 +9,10 @@
 	<img id="slideLeft" src="{{ asset('images/slide_left.png') }}" />
 	<img id="slideRight" src="{{ asset('images/slide_right.png') }}" />
     <div class="minsInner">
-         <a href="{{ asset('images/037.jpg') }}" data-productName="Wiadro" data-description="Testowy opis produktu wiadro" data-index="000" class="lightbox"><img src="{{ asset('images/037.jpg') }}" /></a>
-         <a href="{{ asset('images/052.jpg') }}" data-productName="Łyszki :D" data-description="Testowy opis produktu łyszka" data-index="6789" class="lightbox"> <img src="{{ asset('images/052.jpg') }}" /></a>
-         <a href="{{ asset('images/064.jpg') }}" data-productName="Deski" data-description="Testowy opis produktu deszki" data-index="234345" class="lightbox"><img src="{{ asset('images/064.jpg') }}" /></a>
-         <a href="{{ asset('images/041.jpg') }}" data-productName="Spinatrze :p" data-description="Testowy opis produktu szpinaki" data-index="1" class="lightbox"> <img src="{{ asset('images/041.jpg') }}" /></a>
+         <a href="{{ asset('images/037.jpg') }}" data-productName="Wiadro" data-description="Testowy opis produktu wiadro" data-index="2" class="lightbox"><img src="{{ asset('images/037.jpg') }}" /></a>
+         <a href="{{ asset('images/052.jpg') }}" data-productName="Łyżki :D" data-description="Testowy opis produktu łyżka" data-index="3" class="lightbox"> <img src="{{ asset('images/052.jpg') }}" /></a>
+         <a href="{{ asset('images/064.jpg') }}" data-productName="Deski" data-description="Testowy opis produktu deski" data-index="4" class="lightbox"><img src="{{ asset('images/064.jpg') }}" /></a>
+         <a href="{{ asset('images/041.jpg') }}" data-productName="Spinacze :p" data-description="Testowy opis produktu spinacze" data-index="1" class="lightbox"> <img src="{{ asset('images/041.jpg') }}" /></a>
            <a href="{{ asset('images/037.jpg') }}" class="lightbox"><img src="{{ asset('images/037.jpg') }}" /></a>
          <a href="{{ asset('images/052.jpg') }}" class="lightbox"> <img src="{{ asset('images/052.jpg') }}" /></a>
          <a href="{{ asset('images/064.jpg') }}" class="lightbox"><img src="{{ asset('images/064.jpg') }}" /></a>
@@ -109,7 +109,7 @@
    function lightbox()
     {
     	$('a.lightbox').click(function(e){
-    		$('body').css('overflow-y', 'hidden');
+    		$('body').css('overflow', 'hidden');
     		$('<div class="lightboxWrapper"></div>')
     		.css('top', $(document).scrollTop())
     		.css('opacity', '0')
@@ -125,7 +125,7 @@
     		$('<img />')
     		.attr('src', $(this).attr('href')).appendTo('.lightboxContainer')
     		.load(function(){
-    			$('.lightboxContainer') .fadeIn(1000);
+    			$('.lightboxContainer').css('top', $(document).scrollTop()).fadeIn(1000);
     		})
     		.click(function(){
     			removeLightbox();
