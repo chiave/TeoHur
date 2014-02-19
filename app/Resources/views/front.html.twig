@@ -10,11 +10,16 @@
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
        <link href='http://fonts.googleapis.com/css?family=Alegreya&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Alex+Brush&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <script src="{{ asset('js/jquery-1.11.0.min.js') }}"></script>
     </head>
     <body>
     	<div id="page">
     		<div id="header">
+    			<div class="logo">
+    				<h1><a href="{{ path('chiave_gallery_frontend_categories') }}">Teofil</a></h1>
+    			</div>
+    			<div class="textWrapper"><h1 class="left">Galanteria</h1> <h1 class="right">Drzewna</h1></div>
     		</div><!-- end div header -->
 
     		<div class="fullWrapper">
