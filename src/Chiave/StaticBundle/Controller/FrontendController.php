@@ -13,7 +13,7 @@ class FrontendController extends Controller
      *
      * @Route("/{slug}", name="chiave_static")
      */
-    public function indexAction($slug = '_home')
+    public function indexAction($slug = 'glowna')
     {
         return $this->render('ChiaveStaticBundle:Frontend:'.$slug.'.html.twig');
     }
