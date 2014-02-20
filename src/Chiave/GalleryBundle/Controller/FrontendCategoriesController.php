@@ -45,7 +45,7 @@ class FrontendCategoriesController extends Controller
     /**
      * Stow one category with childrens.
      *
-     * @Route("/", name="chiave_gallery_frontend_categories_show")
+     * @Route("", name="chiave_gallery_frontend_categories_show")
      * @Method("GET")
      * @Template()
      */

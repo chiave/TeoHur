@@ -10,7 +10,7 @@
 	<div class="mainParagraph">
 	<p>"F.H.P.U TEOFIL" - firma oparta na tradycjach rodzinnych, wywodzi się ze słynnych żurowskich wytwórców galanterii i bednarstwa. Zajmuje się produkcją i dystrybucją wszelkiego rodzaju wyrobów użytkowych z drewna niezbędnych w każdym gospodarstwie domowym. </p>
 	<p> Jesteśmy od wielu już lat producentem artykułów gospodarstwa domowego z drewna. Są to: deski do krojenia o różnym kształcie, widelce drewniane, nożyki do masła, wałki do ciasta, deski do mięsa, młotki do mięsa, tłuczki, łyżki o dowolnych kształtach, łopatki, nożyki, stojaki, tace, wieszaki i wiele innych. Wyroby z drewna są ekologiczne i estetyczne. </p>
-	
+
 	<div class="slider">
 	    <div class="item show">
 	       <img src="{{ asset('images/037.jpg') }}" />
@@ -33,12 +33,12 @@
 	        <p>Krótki opis produktu2, Krótki opis produktu4, Krótki opis produktu4</p>
 	    </div>
 	 </div><!-- end div slider -->
-	
+
 	<p>Można bez żadnych obaw używać je do kontaktu z żywnością. Mogą one być elementami wyposażenia naszych kuchni, stylowych restauracji, barów oraz pensjonatów.  </p>
 	<br /><hr /><br />
 	<p>Ponadto produkujemy zabawki z drewna. Ostatnio są one dosyć często wybierane przez rodziców, którzy dbają o zdrowie i bezpieczeństwo swoich dzieci.</p>
 	<div class="slider">
-		
+
 		 <div class="item show">
 	     <img src="{{ asset('images/064.jpg') }}" />
 	        <h1>Nazwa produktu2</h1>
@@ -59,35 +59,35 @@
 	        <h1>Nazwa produktu2</h1>
 	        <p>Krótki opis produktu2, Krótki opis produktu2, Krótki opis produktu2</p>
 	    </div>
-	   
+
 	 </div><!-- end div slider -->
-	 
+
 	 <br /><hr /><br />
-	 
+
 	 <ul class="arrowList">
 	 	<li>Przy znacznych ilościach - atrakcyjne ceny do uzgodnienia. Uzgodniony asortyment jest realizowany terminowo w/g wcześniejszych ustaleń.</li>
 	 	<li>Artykuły do przesyłki pakowane są według życzeń klientów - foliowane, w kartonach lub na paletach - tak aby transport nie sprawiał kłopotów.</li>
 	 </ul>
-	
+
 	</div><!-- end mainParagraph -->
-	
-	
+
+
 </div>
 
 {% endblock %}
 
 
- {% block javascripts %}
- 
+ {% block javascriptsready %}
+
  $.each( $('.slider'), function( key, value ) {
  	$(value).css('height', $(value).children(':first').height());
 	 setInterval(function() {
 	 		slideShow(value);
-	 	}, 
+	 	},
 	 	6000
 	 );
 });
- 
+
  function slideShow(slider){
      var current = $(slider).find('.show');
      var next = current.next().length ? current.next() : current.parent().children(':first');
@@ -97,5 +97,5 @@
      next.fadeIn(2000).addClass('show');
  };
 
-{% endblock %} 
+{% endblock %}
 
