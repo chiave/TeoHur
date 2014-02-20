@@ -1,0 +1,251 @@
+{% extends '::front.html.twig' %}
+{% block title %}
+     Strona główna
+{% endblock %}
+
+{% block mainSide %}
+
+<div class="selectList">
+ <ul>
+    <li><a>Wybierz kategorię</a></li>
+    <li><a class="listItem" data-id="0">Ostatnio dodane</a></li>
+
+    {% for category in categories %}
+        <li><a class="listItem" data-id="{{ category.id }}" href="">{{ category.name }}</a></li>
+    {% endfor %}
+
+</ul>
+</div>
+<div class="chosenItem">Wybrano: <span>TODO - CURRENT CATEGORY NAME</span> </div>
+
+<div class="separator"></div>
+
+<div class="tilesWrapper">
+
+    {% for category in categories %}
+        <div class="toggleTile">
+            <div class="tile">
+                <div class="imgDiv"><img src="{{ category.file.webpath }}" alt="PHOTO" /></div>
+                <h1>{{ category.name }}</h1>
+                <p>{{ category.description }}</p>
+                <a>Więcej</a>
+            </div><!-- end tile -->
+
+            {% for item in category.items %}
+                <div class="tileChildren">
+                     <div class="imgDiv"><img src="{{ item.file.webpath }}" alt="PHOTO" /></div>
+                     <div class="id">{{ item.productKey }}</div>
+                     <h1>{{ item.name }}</h1>
+                     <p>{{ item.description }}</p>
+                </div><!-- end tileChildren -->
+            {% endfor %}
+
+        </div> <!--end togglTile -->
+    {% endfor %}
+
+ </div><!-- end div tiles wrapper -->
+{% endblock %}
+
+
+{% block javascripts %}
+
+<script type="text/javascript">
+
+
+
+    $('.selectList a.listItem').click(function(e) {
+        e.preventDefault();
+
+        var categoryId = $(this).data('id');
+        console.log('clicjed on li a with id '+(categoryId));
+
+        var url = "{{ path('chiave_gallery_frontend_categories_ajax', {id: '__id__'}) }}"
+
+        $.get(
+            url.replace('__id__', categoryId),
+            function(data) {
+                if (data.success) {
+                    $( ".toggleTile" ).each(function() {
+                        $(this).addClass('toRemove');
+                    });
+
+                    $.each(data.categories, function( index, category ) {
+                        var string =
+                        '<div class="toggleTile hidden">'+
+                            '<div class="tile">'+
+                                '<div class="imgDiv">'+
+                                '<img src="'+category.file+'" alt="PHOTO" />'+
+                                '</div>'+
+                                '<h1>'+category.name+'</h1>'+
+                                '<p>'+category.description+'</p>'+
+                                '<a>Więcej</a>'+
+                            '</div>';
+
+                        $.each(category.items, function( index, item ) {
+                            string +=
+                            '<div class="tileChildren">'+
+                                '<div class="imgDiv">'+
+                                    '<img src="'+item.file+'" alt="PHOTO" />'+
+                                '</div>'+
+                                '<div class="id">'+item.productKey+'</div>'+
+                                '<h1>'+item.name+'</h1>'+
+                                '<p>'+item.description+'</p>'+
+                            '</div>';
+                        });
+
+                        string += '</div>';
+
+                        $('.tilesWrapper').prepend(string);
+                    });
+
+                    $( ".toggleTile" ).each(function() {
+                        $(this).slideDown();
+                    });
+                    $( ".toRemove" ).each(function() {
+                        $(this).slideUp();
+                    });
+                    $( ".toRemove" ).each(function() {
+                        $(this).remove;
+                    });
+                }
+            }
+        );
+    });
+
+
+
+  scroll();
+  lightbox();
+
+  function scroll()
+    {
+        var itemSize = $('.minsInner img').length;
+        $('.minsInner').css('width', itemSize * ($('.minsInner img').width() + 6));
+
+
+        var isAnimated = false;
+        $('#slideRight').click(function(){
+            if(isAnimated)
+                return;
+            else
+            {
+                isAnimated = true;
+                var minList =  $(this).parent().children('.minsInner');
+                var scrollAmount = minList.width()-$(this).parent().width();
+                var currentPos = Math.abs(parseInt($(minList).css('left')));
+                var remainingScroll = scrollAmount - currentPos;
+
+                var nextScroll = $(this).parent().width();
+
+                if(remainingScroll <= nextScroll){
+
+                    nextScroll = remainingScroll;
+                    $(this).fadeOut(1000);
+
+                }
+
+                if(currentPos < scrollAmount){
+                    $(minList).animate({'left':'-=' + nextScroll}, 1000);
+                }
+                 $(this).parent().children('#slideLeft').fadeIn(1000);
+                 setTimeout(function(){
+                     isAnimated = false;
+                 }, 1000);
+            }
+        });
+
+        $('#slideLeft').click(function(){
+            if(isAnimated)
+                return;
+            else{
+                isAnimated = true;
+                var minList =  $(this).parent().children('.minsInner');
+                var scrollAmount = minList.width()-$(this).parent().width();
+                var currentPos = Math.abs(parseInt($(minList).css('left')));
+                var remainingScroll = currentPos;
+
+                var nextScroll = $(this).parent().width();
+                if(remainingScroll <= nextScroll){
+                    nextScroll = remainingScroll;
+                    $(this).fadeOut(1000);
+                }
+
+                if(currentPos >= 50){
+                    $(minList).animate({'left':'+=' + nextScroll}, 1000);
+                }
+                $(this).parent().children('#slideRight').fadeIn(1000);
+                setTimeout(function(){
+                    isAnimated = false;
+                }, 1000);
+                }
+           });
+    };
+
+   function lightbox()
+    {
+        $('a.lightbox').click(function(e){
+            $('body').css('overflow', 'hidden');
+            $('<div class="lightboxWrapper"></div>')
+            .css('top', $(document).scrollTop())
+            .css('opacity', '0')
+            .animate({'opacity': '0.9'}, 'fast')
+            .appendTo('body');
+
+            $('<div class="lightboxContainer"></div>')
+            .hide()
+            .appendTo('body');
+
+            addInfo($(this));
+
+            $('<img />')
+            .attr('src', $(this).attr('href')).appendTo('.lightboxContainer')
+            .load(function(){
+                $('.lightboxContainer').css('top', $(document).scrollTop()).fadeIn(1000);
+            })
+            .click(function(){
+                removeLightbox();
+            })
+            return false;
+        });
+
+
+        function removeLightbox(){
+            $('.lightboxWrapper, .lightboxContainer')
+            .fadeOut('slow', function() {
+                $(this).remove();
+                $('body').css('overflow-y', 'auto');
+            });
+        }
+        function addInfo(object)
+        {
+            var name = $(object).attr('data-productName');
+            if(!(name))
+                  name='';
+            var description = $(object).attr('data-description');
+            if(!(description))
+               description='';
+            var index = $(object).attr('data-index');
+            if(!(index))
+                index='';
+            $('.lightboxContainer').html(
+                    '<div class="lbHeader">' + name + '</div>' +
+                    '<div class="lbDescription">' + description + '</div>' +
+                    '<div class="lbIndex">' + index + '</div>'
+            );
+
+        }
+    };
+
+    $('.selectList li:FIRST-CHILD a').click(function(){
+        $(this).parent().parent().children().slideDown(700);
+    });
+
+    $('.tilesWrapper').on('click', '.toggleTile .tile a', function(){
+        $(this).parent().parent().children('.tileChildren').slideDown(700);
+        $(this).hide();
+    });
+
+</script>
+
+{% endblock %}
+
