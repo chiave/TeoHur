@@ -71,8 +71,8 @@
 	        <p>Łyżka okrągła z otworami wykonana z drewna bukowego długość łyżki 280 mm długość rączki 215 mm waga 0.020 kg </p>
 	      </div><!-- end tileChildren -->
     </div><!-- end toggletile -->
-   
-    
+
+
 
  </div><!-- end div tiles wrapper -->
 
@@ -101,7 +101,7 @@
          <a href="{{ asset('images/052.jpg') }}" class="lightbox"> <img src="{{ asset('images/052.jpg') }}" /></a>
          <a href="{{ asset('images/064.jpg') }}" class="lightbox"><img src="{{ asset('images/064.jpg') }}" /></a>
          <a href="{{ asset('images/041.jpg') }}" class="lightbox"> <img src="{{ asset('images/041.jpg') }}" /></a>
-        
+
     </div>
 </div>
  -->
@@ -109,19 +109,19 @@
 
 
 
-{% block javascripts %}
+{% block javascriptsready %}
 
   scroll();
   lightbox();
-  
+
   function scroll()
     {
     	var itemSize = $('.minsInner img').length;
     	$('.minsInner').css('width', itemSize * ($('.minsInner img').width() + 6));
-    	
-    	
+
+
     	var isAnimated = false;
-    	$('#slideRight').click(function(){	
+    	$('#slideRight').click(function(){
     		if(isAnimated)
     			return;
     		else
@@ -131,16 +131,16 @@
 	    		var scrollAmount = minList.width()-$(this).parent().width();
 	    		var currentPos = Math.abs(parseInt($(minList).css('left')));
 	    		var remainingScroll = scrollAmount - currentPos;
-	    		
+
 	    		var nextScroll = $(this).parent().width();
-	    		
+
 	    		if(remainingScroll <= nextScroll){
-	    		
+
 	    			nextScroll = remainingScroll;
-	    			$(this).fadeOut(1000); 
-	    			
+	    			$(this).fadeOut(1000);
+
 	    		}
-	    		
+
 	    		if(currentPos < scrollAmount){
 	    			$(minList).animate({'left':'-=' + nextScroll}, 1000);
 	    		}
@@ -150,8 +150,8 @@
 	    		 }, 1000);
     		}
     	});
-    	
-    	$('#slideLeft').click(function(){ 
+
+    	$('#slideLeft').click(function(){
     		if(isAnimated)
     			return;
     		else{
@@ -160,13 +160,13 @@
 	            var scrollAmount = minList.width()-$(this).parent().width();
 	            var currentPos = Math.abs(parseInt($(minList).css('left')));
 	            var remainingScroll = currentPos;
-	            
+
 	            var nextScroll = $(this).parent().width();
 	            if(remainingScroll <= nextScroll){
 	                nextScroll = remainingScroll;
-	                $(this).fadeOut(1000);  
+	                $(this).fadeOut(1000);
 	            }
-	            
+
 	            if(currentPos >= 50){
 	                $(minList).animate({'left':'+=' + nextScroll}, 1000);
 	            }
@@ -177,7 +177,7 @@
 	    		}
 	       });
     };
-    
+
    function lightbox()
     {
     	$('a.lightbox').click(function(e){
@@ -187,13 +187,13 @@
     		.css('opacity', '0')
     		.animate({'opacity': '0.9'}, 'fast')
     		.appendTo('body');
-    		
+
     		$('<div class="lightboxContainer"></div>')
     		.hide()
     		.appendTo('body');
-    		
+
     		addInfo($(this));
-    		
+
     		$('<img />')
     		.attr('src', $(this).attr('href')).appendTo('.lightboxContainer')
     		.load(function(){
@@ -204,8 +204,8 @@
     		})
     		return false;
     	});
-    	
-    	
+
+
     	function removeLightbox(){
     		$('.lightboxWrapper, .lightboxContainer')
     		.fadeOut('slow', function() {
@@ -229,18 +229,18 @@
     				'<div class="lbDescription">' + description + '</div>' +
     				'<div class="lbIndex">' + index + '</div>'
     		);
-    				
+
     	}
     };
-    
+
     $('.selectList li:FIRST-CHILD a').click(function(){
     	$(this).parent().parent().children().slideDown(700);
     });
-    
+
     $('.toggleTile .tile a').click(function(){
     	$(this).parent().parent().children('.tileChildren').slideDown(700);
     	$(this).hide();
     });
-    
-    
+
+
 {% endblock %}

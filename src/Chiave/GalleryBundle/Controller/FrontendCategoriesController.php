@@ -18,7 +18,7 @@ use Chiave\GalleryBundle\Form\CategoriesType;
 /**
  * Pages controller.
  *
- * @Route("/")
+ * @Route("/produkty")
  */
 class FrontendCategoriesController extends Controller
 {

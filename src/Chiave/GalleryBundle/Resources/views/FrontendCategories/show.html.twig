@@ -16,7 +16,7 @@
 
 </ul>
 </div>
-<div class="chosenItem">Wybrano: <span>TODO - CURRENT CATEGORY NAME</span> </div>
+<div class="chosenItem">Wybrano: <span id="categoryName"></span> </div>
 
 <div class="separator"></div>
 
@@ -51,13 +51,12 @@
 
 <script type="text/javascript">
 
-
-
     $('.selectList a.listItem').click(function(e) {
         e.preventDefault();
 
         var categoryId = $(this).data('id');
-        console.log('clicjed on li a with id '+(categoryId));
+
+        $( "#categoryName").html($(this).text());
 
         var url = "{{ path('chiave_gallery_frontend_categories_ajax', {id: '__id__'}) }}"
 
@@ -68,6 +67,7 @@
                     $( ".tilesWrapper").find(".toggleTile").each(function() {
                         $(this).addClass('toRemove');
                     });
+
 
                     $.each(data.categories, function( index, category ) {
                         var string =
@@ -98,14 +98,17 @@
                         $('.tilesWrapper').prepend(string);
                     });
 
-                    $( ".tilesWrapper").find(".toggleTile").each(function() {
-                        $(this).slideDown();
-                    });
                     $( ".tilesWrapper").find(".toRemove").each(function() {
-                        $(this).slideUp(function(){
+                        $(this).fadeOut(500, function(){
                             $(this).remove();
                         });
                     });
+                    setTimeout(function() {
+                        $( ".tilesWrapper").find(".toggleTile").each(function() {
+                            $(this).fadeIn(500);
+                        });
+                    }, 510);
+
                 }
             }
         );
