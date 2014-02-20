@@ -117,6 +117,8 @@ class BackendCategoriesController extends Controller
 
         $category = $em->getRepository('ChiaveGalleryBundle:Categories')->find($id);
 
+        // var_dump($category->getChildren()->isEmpty());
+        // die;
         if (!$category) {
             throw $this->createNotFoundException('Unable to find Categories.');
         }

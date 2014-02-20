@@ -24,10 +24,11 @@ class ItemsType extends AbstractType
             ->add('category', 'entity', array(
                     'class' => 'ChiaveGalleryBundle:Categories',
                     'query_builder' => function(EntityRepository $er) {
-                        return $er->createQueryBuilder('f')
-                            ->orderBy('f.name', 'ASC');
+                        return $er->createQueryBuilder('c')
+                            ->andWhere('c.isParent = false')
+                            ->orderBy('c.name', 'ASC')
+                        ;
                     },
-                    'required' => false,
                 )
             )
             ->add('description')

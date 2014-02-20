@@ -39,7 +39,9 @@ class CategoriesType extends AbstractType
                     'query_builder' => function(EntityRepository $er) use ($currentId) {
                         return $er->createQueryBuilder('c')
                             ->where('c.id != :id')
-                            ->andWhere('c.parent IS NULL')
+                            // ->andWhere('c.parent IS NULL')
+                            //->andWhere('c.isParent = false')
+                            ->andWhere('c.hasItems = false')
                                 ->setParameter('id', $currentId)
                             ->orderBy('c.name', 'ASC')
                         ;

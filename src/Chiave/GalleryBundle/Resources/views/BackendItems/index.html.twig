@@ -11,8 +11,8 @@
             <tr>
                 <th></th>
                 <th>Nazwa</th>
-                <th>Galeria</th>
-                {# <th>Metadane</th> #}
+                <th>Kategoria</th>
+                <th>Miniatura</th>
                 <th>
                     <a class="tiny button success" href="{{ path('chiave_gallery_items_new') }}">
                         Dodaj nowy produkt
@@ -26,9 +26,7 @@
                 <td>{{ loop.index }}</td>
                 <td>{{ item.name }}</td>
                 <td>{{ item.category }}</td>
-                {# <td>Oryginalna nazwa:<br />
-                    {{ item.file.originalName }}<br/>
-                    Rozmiar: {{ item.file.sizeText }}</td> #}
+                <td><img href="{{ item.file.webPath }}" /></td>
                 <td>
                     <div class="button-bar">
                         <ul class="button-group">
@@ -56,7 +54,7 @@
             function(data) {
                 if (data.success) {
                     $(toRemove).remove();
-                    alert('Plik usunięty pomyślnie');
+                    alert('Produkt usunięty pomyślnie');
                 } else {
                     alert('Wystąpił straszny błąd: '+data.error+' :(');
                 }
