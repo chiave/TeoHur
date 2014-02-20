@@ -19,12 +19,13 @@
 # Parent: Wpis - rodzic
 
 # Files
-Key: Unikalne ID produktu
+Key: Numer produktu
 Name: Nazwa
 Description: Opis
-Category: Galeria
+Category: Kategoria
 Visible: Udostępnij plik
 File: Plik
+Parent: Kategoria nadrzędna
 
 # # Front - form in contact
 # firstname: Imię

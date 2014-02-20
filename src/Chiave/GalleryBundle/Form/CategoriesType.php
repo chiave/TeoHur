@@ -31,7 +31,9 @@ class CategoriesType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
-            ->add('file', new FilesType())
+            ->add('file', new FilesType(), array(
+                  'label'   => ' ',
+              ))
             ->add('parent', 'entity', array(
                     'class' => 'ChiaveGalleryBundle:Categories',
                     'query_builder' => function(EntityRepository $er) use ($currentId) {

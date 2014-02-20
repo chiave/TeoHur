@@ -54,3 +54,8 @@ th .button {
     margin-bottom: 15px;
     padding: 10px;
 }
+
+table img {
+    max-height: 100px;
+    max-width: 100px;
+}

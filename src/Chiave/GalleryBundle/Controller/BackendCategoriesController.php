@@ -37,7 +37,7 @@ class BackendCategoriesController extends Controller
 
         $categories = $em
             ->getRepository('ChiaveGalleryBundle:Categories')
-            ->findBy(array(), array('createdAt' => 'DESC'));
+            ->findBy(array('parent' => null), array('createdAt' => 'DESC'));
 
         return array(
             'categories' => $categories,
