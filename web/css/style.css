@@ -213,7 +213,7 @@ body, html
 }
 
 
-.tile .imgDiv 
+.tile .imgDiv
 {
 	width:160px;
 	height:120px;
@@ -266,7 +266,7 @@ body, html
     border: 1px solid #E4D6BA;
     background: #FCEFE4;
 }
-.tileChildren .imgDiv 
+.tileChildren .imgDiv
 {
     width:120px;
     height:100px;
@@ -692,4 +692,9 @@ ul.arrowList li
 {
 	padding:2%;
 	background: black;
+}
+
+.hidden
+{
+    display:none;
 }
