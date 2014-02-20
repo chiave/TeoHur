@@ -33,8 +33,7 @@ class FrontendCategoriesController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $categories = $em
-            ->getRepository('ChiaveGalleryBundle:Categories')
+        $categories = $this->getRepo()
             ->findBy(array(), array('createdAt' => 'DESC'));
 
         return array(
@@ -51,7 +50,8 @@ class FrontendCategoriesController extends Controller
      */
     public function showAction()
     {
-        $categories = $this->getCategories();
+        $categories = $this->getRepo()
+            ->findBy(array(), array('createdAt' => 'DESC'));
 
         return array(
             'categories' => $categories,
@@ -74,7 +74,13 @@ class FrontendCategoriesController extends Controller
         foreach ($categories as $category) {
             $items = array();
 
-            foreach ($category->getItems() as $item) {
+            if($id == 0) {
+                $catItems = $this->getLatestItems(10);
+            } else {
+                $catItems = $category->getItems();
+            }
+
+            foreach ($catItems as $item) {
                 $items[] = array(
                     'id'            => $item->getId(),
                     'productKey'    => $item->getProductKey(),
@@ -84,11 +90,17 @@ class FrontendCategoriesController extends Controller
                 );
             }
 
+            if ($category->getFile()) {
+                $file = $category->getFile()->getWebPath();
+            } else {
+                $file = '../images/categoryLatest.jpg';
+            }
+
             $result->categories[] = array(
                     'id'            => $category->getId(),
                     'name'          => $category->getName(),
                     'description'   => $category->getDescription(),
-                    'file'          => $category->getFile()->getWebPath(),
+                    'file'          => $file,
                     'items'         => $items,
                 )
             ;
@@ -101,10 +113,12 @@ class FrontendCategoriesController extends Controller
     protected function getCategories($id = 0)
     {
         //when id == 0 there will be only latest products
-        //  currently all products
         if ($id == 0) {
-            $categories = $this->getRepo()
-                ->findBy(array(), array('createdAt' => 'DESC'));
+            $category = new Categories();
+            $category->setName('Ostatnio dodane');
+            $category->setDescription('Galeria najnowszych dostępnych produktów');
+
+            $categories[] = $category;
         } else {
             $categories = $this->getRepo()->createQueryBuilder('c')
                 ->where('c.id = :id')
@@ -120,11 +134,20 @@ class FrontendCategoriesController extends Controller
         return $categories;
     }
 
-    protected function getRepo()
+    protected function getLatestItems($count)
+    {
+        return $this->getRepo('ChiaveGalleryBundle:Items')->createQueryBuilder('i')
+            ->orderBy('i.createdAt', 'DESC')
+            ->setMaxResults($count)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+    protected function getRepo($repo = 'ChiaveGalleryBundle:Categories')
     {
         return $this->getDoctrine()
             ->getManager()
-            ->getRepository('ChiaveGalleryBundle:Categories')
+            ->getRepository($repo)
         ;
     }
 }

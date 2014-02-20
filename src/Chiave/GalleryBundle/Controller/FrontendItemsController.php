@@ -31,11 +31,7 @@ class FrontendItemsController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $repo = $em->getRepository('ChiaveGalleryBundle:Items');
-
-        $items = $repo->findByCategory($categoryId);
+        $items = $this->getRepo()->findByCategory($categoryId);
 
         return array(
             'items' => $items,
@@ -51,14 +47,53 @@ class FrontendItemsController extends Controller
      */
     public function categoryItemsAction($categoryId)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $repo = $em->getRepository('ChiaveGalleryBundle:Items');
-
-        $items = $repo->findByCategory($categoryId);
+        $items = $this->getRepo()->findByCategory($categoryId);
 
         return array(
             'items' => $items,
         );
+    }
+
+    /**
+     * Render slider with random products
+     *
+     * @Route("/slider", name="chiave_gallery_frontend_items_slider_random")
+     * @Method("GET")
+     * @Template("ChiaveGalleryBundle:FrontendItems:slider.html.twig")
+     */
+    public function renderRandomItemsSliderAction($count = 5)
+    {
+        $items = $this->getRepo()->findByCategory($categoryId);
+
+        return array(
+            'items' => $items,
+        );
+    }
+
+    protected function getLatestItems($count)
+    {
+        return $this->getRepo()->createQueryBuilder('i')
+            ->orderBy('c.createdAt', 'DESC')
+            ->setMaxResults($count)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    protected function getRandomItems($count)
+    {
+        return $this->getRepo()->createQueryBuilder('i')
+            ->setMaxResults($count)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    protected function getRepo()
+    {
+        return $this->getDoctrine()
+            ->getManager()
+            ->getRepository('ChiaveGalleryBundle:Items')
+        ;
     }
 }
