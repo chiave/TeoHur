@@ -171,7 +171,9 @@ class Items
      */
     public function setCategory(\Chiave\GalleryBundle\Entity\Categories $category)
     {
+        $this->category->setHasItems(false);
         $this->category = $category;
+        $this->category->setHasItems(true);
 
         return $this;
     }
@@ -271,5 +273,13 @@ class Items
     public function setUpdatedTimestamps()
     {
         $this->updatedAt = new \DateTime('now');
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function setUpdatedRelations()
+    {
+        $this->category->setHasItems = true;
     }
 }

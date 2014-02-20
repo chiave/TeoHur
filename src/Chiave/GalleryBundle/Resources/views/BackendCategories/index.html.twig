@@ -13,7 +13,9 @@
                 <th>Nazwa</th>
                 <th>Opis</th>
                 <th>Plik</th>
-                <th>Produktów<br />w kategorii</th>
+                {# <th>isParent</th>
+                <th>hasItems</th> #}
+                <th>Produktów<br/>w kategorii</th>
                 <th>
                     <a class="tiny button success" href="{{ path('chiave_gallery_categories_new') }}">
                         Dodaj nową kategorię
@@ -33,6 +35,8 @@
                     Brak pliku
                     {% endif %}
                 </td>
+                {# <td>{{ category.isParent }}</td>
+                <td>{{ category.hasItems }}</td> #}
                 <td>{{ category.items | length }}</td>
                 <td>
                     <div class="button-bar">
@@ -56,7 +60,9 @@
                         Brak pliku
                         {% endif %}
                     </td>
-                    <td>{{ category.items | length }}</td>
+                    {# <td>{{ subcategory.isParent }}</td>
+                    <td>{{ subcategory.hasItems }}</td> #}
+                    <td>{{ subcategory.items | length }}</td>
                     <td>
                         <div class="button-bar">
                             <ul class="button-group">

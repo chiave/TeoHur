@@ -48,6 +48,11 @@ class Categories
     private $children;
 
     /**
+     * @ORM\Column(name="isParent", type="boolean")
+     */
+    private $isParent = false;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Categories", inversedBy="children")
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
      */
@@ -57,6 +62,11 @@ class Categories
      * @ORM\OneToMany(targetEntity="Items", mappedBy="category")
      **/
     private $items;
+
+    /**
+     * @ORM\Column(name="hasItems", type="boolean")
+     */
+    private $hasItems = false;
 
     /**
      * @var \DateTime
@@ -174,6 +184,7 @@ class Categories
     public function addChild(\Chiave\GalleryBundle\Entity\Categories $children)
     {
         $this->children[] = $children;
+        $this->isParent = true;
 
         return $this;
     }
@@ -186,6 +197,7 @@ class Categories
     public function removeChild(\Chiave\GalleryBundle\Entity\Categories $children)
     {
         $this->children->removeElement($children);
+        $this->isParent = !$this->children->isEmpty();
     }
 
     /**
@@ -206,7 +218,15 @@ class Categories
      */
     public function setParent(\Chiave\GalleryBundle\Entity\Categories $parent = null)
     {
+        $parent ? $prnt = $parent : $prnt = $this->parent;
+
+        if ($prnt) {
+            $prnt->setIsParent($parent != null);
+        }
+
         $this->parent = $parent;
+
+        // $this->getParent() ? $this->isParent = true : $this->isParent = false;
 
         return $this;
     }
@@ -230,6 +250,7 @@ class Categories
     public function addItem(\Chiave\GalleryBundle\Entity\Items $items)
     {
         $this->items[] = $items;
+        $this->hasItems = true;
 
         return $this;
     }
@@ -242,6 +263,7 @@ class Categories
     public function removeItem(\Chiave\GalleryBundle\Entity\Items $items)
     {
         $this->items->removeElement($items);
+        $this->hasItems = !$this->items->isEmpty();
     }
 
     /**
@@ -315,5 +337,61 @@ class Categories
     public function setUpdatedTimestamps()
     {
         $this->updatedAt = new \DateTime('now');
+    }
+
+    /**
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     */
+    public function setUpdatedRelations()
+    {
+        $this->isParent = !$this->children->isEmpty();
+        $this->hasItems = !$this->items->isEmpty();
+    }
+
+    /**
+     * Set isParent
+     *
+     * @param boolean $isParent
+     * @return Categories
+     */
+    public function setIsParent($isParent)
+    {
+        $this->isParent = $isParent;
+
+        return $this;
+    }
+
+    /**
+     * Get isParent
+     *
+     * @return boolean
+     */
+    public function getIsParent()
+    {
+        return $this->isParent;
+    }
+
+    /**
+     * Set hasItems
+     *
+     * @param boolean $hasItems
+     * @return Categories
+     */
+    public function setHasItems($hasItems)
+    {
+        $this->hasItems = $hasItems;
+
+        return $this;
+    }
+
+    /**
+     * Get hasItems
+     *
+     * @return boolean
+     */
+    public function getHasItems()
+    {
+        return $this->hasItems;
     }
 }
