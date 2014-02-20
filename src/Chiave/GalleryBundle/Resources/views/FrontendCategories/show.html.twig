@@ -25,7 +25,7 @@
     {% for category in categories %}
         <div class="toggleTile">
             <div class="tile">
-                <div class="imgDiv"><img src="{{ category.file.webpath }}" alt="PHOTO" /></div>
+                <div class="imgDiv"><img src="{{ category.file.webPath }}" alt="PHOTO" /></div>
                 <h1>{{ category.name }}</h1>
                 <p>{{ category.description }}</p>
                 <a>Więcej</a>
@@ -99,7 +99,7 @@
                     });
 
                     $( ".tilesWrapper").find(".toRemove").each(function() {
-                        $(this).fadeOut(500, function(){
+                        $(this).hide(function(){
                             $(this).remove();
                         });
                     });
@@ -245,6 +245,11 @@
     $('.tilesWrapper').on('click', '.toggleTile .tile a', function(){
         $(this).parent().parent().children('.tileChildren').slideDown(700);
         $(this).hide();
+    });
+
+    $('.listItem').click(function () {
+		 $(this).parent().parent().children('li').hide();
+		 $(this).parent().parent().children('li:first').show();
     });
 
 </script>

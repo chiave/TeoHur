@@ -1,0 +1,9 @@
+<div class="slider">
+    {% for item in items %}
+        <div class="item {% if loop.first %}show{% endif %}">
+           <img src="{{ item.file.webPath }}" />
+            <h1>{{ item.name }}</h1>
+            <p>{{ item.description }}</p>
+        </div>
+    {% endfor %}
+ </div><!-- end div slider -->

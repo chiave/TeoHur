@@ -1,13 +1,13 @@
 {% extends "::back.html.twig" %}
 
-{% block title %}Zarządzanie galeriami{% endblock %}
-{% block description %}tworzenie/edycja galerii{% endblock %}
+{% block title %}Zarządzanie kategoriami{% endblock %}
+{% block description %}tworzenie/edycja kategorii{% endblock %}
 
 {% block active_name %}chiave_gallery_categories{% endblock %}
 
 {% block body -%}
 
-{#    {{ form_start(form) }}
+    {# {{ form_start(form) }}
          {{ form_row(form.name) }}
         {{ form_row(form.description) }}
         {{ form_row(form.file) }}
@@ -21,7 +21,7 @@
     {{ form(form) }}
 
     <a class="small button" href="{{ path('chiave_gallery_categories') }}">
-        Powrót do listy galerii
+        Powrót do listy kategorii
     </a>
 
 {% endblock %}

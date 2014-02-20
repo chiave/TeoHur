@@ -1,7 +1,7 @@
 {% extends "::back.html.twig" %}
 
-{% block title %}Zarządzanie galeriami{% endblock %}
-{% block description %}lista galerii{% endblock %}
+{% block title %}Zarządzanie kategoriami{% endblock %}
+{% block description %}lista kategorii{% endblock %}
 
 {% block active_name %}chiave_gallery_categories{% endblock %}
 
@@ -12,19 +12,28 @@
                 <th></th>
                 <th>Nazwa</th>
                 <th>Opis</th>
+                <th>Plik</th>
+                <th>Produktów<br />w kategorii</th>
                 <th>
                     <a class="tiny button success" href="{{ path('chiave_gallery_categories_new') }}">
-                        Dodaj nową galerię
+                        Dodaj nową kategorię
                     </a>
                 </th>
             </tr>
         </thead>
         <tbody>
         {% for category in categories %}
-            <tr>
+            <tr class="categories_parents">
                 <td>{{ loop.index }}</td>
                 <td>{{ category.name }}</td>
                 <td>{{ category.description }}</td>
+                <td>{% if category.file %}
+                    <img src="{{ category.file.webpath }}" />
+                    {% else %}
+                    Brak pliku
+                    {% endif %}
+                </td>
+                <td>{{ category.items | length }}</td>
                 <td>
                     <div class="button-bar">
                         <ul class="button-group">
@@ -34,6 +43,30 @@
                     </div>
                 </td>
             </tr>
+
+            {% set parentindex = loop.index %}
+            {% for subcategory in category.children %}
+                <tr class="categories_childrens">
+                    <td>{{ parentindex }}.{{ loop.index }}</td>
+                    <td>{{ subcategory.name }}</td>
+                    <td>{{ subcategory.description }}</td>
+                    <td>{% if subcategory.file %}
+                        <img src="{{ subcategory.file.webpath }}" />
+                        {% else %}
+                        Brak pliku
+                        {% endif %}
+                    </td>
+                    <td>{{ category.items | length }}</td>
+                    <td>
+                        <div class="button-bar">
+                            <ul class="button-group">
+                                <li><a class="tiny button" href="{{ path('chiave_gallery_categories_edit', { 'id': subcategory.id }) }}">Edytuj</a></li>
+                                <li><a class="tiny button alert delete_button" href="{{ path('chiave_gallery_categories_delete', { 'id': subcategory.id }) }}">Usuń</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
         {% endfor %}
         </tbody>
     </table>
@@ -52,7 +85,7 @@
             function(data) {
                 if (data.success) {
                     $(toRemove).remove();
-                    alert('Galeria usunięta pomyślnie');
+                    alert('Kategoria usunięta pomyślnie');
                 } else {
                     alert('Wystąpił straszny błąd: '+data.error+' :(');
                 }
