@@ -63,30 +63,24 @@ class FrontendItemsController extends Controller
      */
     public function renderRandomItemsSliderAction($count = 5)
     {
-        $items = $this->getRepo()->findByCategory($categoryId);
+        $items = $this->getRandomItems($count);
 
         return array(
             'items' => $items,
         );
     }
 
-    protected function getLatestItems($count)
-    {
-        return $this->getRepo()->createQueryBuilder('i')
-            ->orderBy('c.createdAt', 'DESC')
-            ->setMaxResults($count)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-
     protected function getRandomItems($count)
     {
-        return $this->getRepo()->createQueryBuilder('i')
+        $items = $this->getRepo()->createQueryBuilder('i')
             ->setMaxResults($count)
             ->getQuery()
-            ->getResult()
+            ->getResult();
         ;
+
+        shuffle($items);
+
+        return $items;
     }
 
     protected function getRepo()
