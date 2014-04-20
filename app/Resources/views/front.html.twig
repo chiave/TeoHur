@@ -10,8 +10,9 @@
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.png') }}" />
        <link href='http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-		<link href='http://fonts.googleapis.com/css?family=Alex+Brush&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Courgette&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <script src="{{ asset('js/jquery-1.11.0.min.js') }}"></script>
+         <script src="{{ asset('js/lukeWidgets.js') }}"></script>
     </head>
     <body>
     	<div id="page">
@@ -35,7 +36,8 @@
 <li><a href="{{ path('chiave_static', { slug: 'kontakt'} ) }}">Kontakt</a></li>
     				</ul>
     			</div>
-    		</div>
+                {% block leftSide %}{% endblock %}
+    		</div> <!-- end leftSide -->
 
     		<div class="mainSide">
 
@@ -46,23 +48,9 @@
        		 	<h2>Kazimierz Mikrut, 38-247 Żurowa 205 A, Tarnów, Małopolska, 14 6518190, 600 402 562, 602 447 248</h2>
        		 </div>
         </div> <!-- end div page -->
-
-
-        <script>
-
-        	$(document).ready(function(){
-            	$('.verticalMenu li').hover(function(){
-                	$(this).animate({paddingLeft: '+=10px'}, 400);
-                	}, function() {
-                    	$(this).animate({paddingLeft: '-=10px'}, 50);
-                	});
-
-                {% block javascriptsready %} {% endblock %}
-            });
-        </script>
-
         {% block javascripts %} {% endblock %}
-
-
+        <script>
+           lukeWidgets();
+        </script>
     </body>
 </html>

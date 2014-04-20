@@ -2,7 +2,7 @@ body, html
 {
 	width:100%;
 	height:100%;
-	background: #f5eaca;
+	background: url(../images/checkered-lines-pattern.png);
 }
  
 #page
@@ -12,6 +12,7 @@ body, html
 	position: relative;
 	min-height: 100%;
 	overflow: hidden;
+	background:rgba(255, 235, 200, 0.49);
 }
 
 #header
@@ -20,7 +21,7 @@ body, html
 	background:url(../images/header_bg.png) no-repeat center;
 	background-size:100% 100%;
 	position: relative;
-	font-family: 'Alex Brush', sans-serif;
+	font-family: 'Courgette', sans-serif;
 	min-height:130px;
 	overflow:hidden;
 	padding-bottom:20px;
@@ -43,7 +44,7 @@ body, html
 #header .logo h1
 {
 	margin-top:45px;
-	font-size:52px;
+	font-size:48px;
 	opacity:0.8;
 }
 
@@ -54,7 +55,7 @@ body, html
 	margin:0px auto;
 	padding-top:50px;
 	color:#fffbdb;
-	font-size:30px;
+	font-size:24px;
 	overflow:hidden;
 }
 .textWrapper h1
@@ -117,23 +118,37 @@ body, html
 
 .fullWrapper
 {
-	max-width:1005px;
+	padding:10px;
+	max-width:985px;
 	margin:0px auto;
+	overflow:hidden;
+	margin-bottom:70px;
+    margin-top:15px;
+	background: rgba(255, 255, 255, 0.36);
+    
+    -webkit-box-shadow: 0px -2px 1px 0px rgb(184, 157, 109);
+   -moz-box-shadow:    0px -2px 1px 0px rgb(184, 157, 109);
+    box-shadow:         0px -2px 1px 0px rgb(184, 157, 109);
 }
 
 
 .leftSide
 {
-	width:23%;
- 	padding-bottom:5px;
+	width:21%;
 	float:left;
+	height:100%;
+    padding:0px 1%;
 
 }
 .mainSide
 {
-	width:77%;
+	width:100%;
+	max-width:744px;
 	float:left;
- 	padding-bottom: 70px;
+ 	padding-left:1%;
+ 	border-left:1px solid rgb(199, 186, 157);
+ 	outline-offset:10px;
+ 	padding-bottom:20px;
 }
 
 @media all and (max-width:600px) {
@@ -157,7 +172,6 @@ body, html
 
 .verticalMenu
 {
-	margin-top: 10px;
 }
 .verticalMenu ul
 {
@@ -174,21 +188,17 @@ body, html
 	display:block;
 	width:100%;
 	padding:10px;
-	background:#829f3d;
-	border-top:2px solid #618F37;
-	border-radius:3px;
+	background:url(../images/menu_bg.jpg) repeat-x;
 	text-decoration: none;
-	color:#f2e6d4;
-	font-size: 16px;
+	color:#DADADA;
+	font-size: 13px;
+	border-top-right-radius:15px;
+	border-bottom-left-radius:15px;
+	text-align: center;
 }
-.verticalMenu ul li:LAST-CHILD a
-{
-	border-bottom:2px solid #618F37;
-	padding:9px 10px;
-}
+
 .verticalMenu ul li a:HOVER {
-	background:#e3c69f;
-	color:#618F37;
+	background:url(../images/menu_bg2.jpg) repeat-x;
 }
 
 /* ---------------------------- kafelki -------------------- */
@@ -707,4 +717,63 @@ ul.arrowList li
 .hidden
 {
     display:none;
+}
+
+#homeSlider
+{
+	width:100%;
+	max-width:765px;
+	height:480px;
+	background:white;
+
+	position: relative;
+}
+#homeSlider img
+{
+	position: absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	z-index:0;
+	opacity:0.7;
+    display:none;
+}
+
+#homeSlider .bottom
+{
+	width:94%;
+	position: absolute;
+	padding:20px 3%;
+	bottom:0px;
+	left:0px;
+	height:110px;
+	background: rgba(68, 68, 68, 0.68);
+	color:white;
+}
+#homeSlider .bottom h1
+{
+	
+	font-size:22px;
+	padding-bottom: 10px;
+}
+#homeSlider .bottom p
+{
+	font-size: 16px;
+}
+
+.businessCard {
+    padding:10px;
+    margin-top:30px;
+    border-top: 1px solid rgb(199, 186, 157);
+    text-align: center;
+}
+.businessCard h2 {
+    font-size:16px;
+    color: #145132;
+}
+.businessCard h3 {
+    font-size:13px;
+    margin-top:10px;
+    color:rgb(88, 88, 88);
 }

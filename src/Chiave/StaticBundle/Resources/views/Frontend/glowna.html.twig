@@ -3,33 +3,31 @@
      Strona główna
 {% endblock %}
 
+{% block leftSide %}
+ 	<div class="businessCard">
+        <br />
+        <h2>GALANTERIA DRZEWNA "TEOFIL"</h2>
+        <h3>Kazimierz Mikrut<br /> 38-247 Żurowa 205 A<br /> Tarnów, 
+            Małopolska<br /> 14 6518190, 600 402 562, 602 447 248</h3>
+    </div> <!-- end business card -->
+{% endblock %}
+
 {% block mainSide %}
 
- <div class="tilesWrapper">
-    <div class="tile">
-        <h1 class="brown">KATEGORIA 1</h1>
-        <img src="{{ asset('images/037.jpg') }}" alt="" />
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Aliquam nec sem faucibus, laoreet augue interdum, volutpat mi. Cras id egestas nisl. Proin ac dui in mauris vehicula imperdiet nec eget sapien. </p>
-        <a class="brown" href="">Więcej</a>
-    </div>
-    <div class="tile">
-        <h1 class="green">KATEGORIA 2</h1>
-        <img src="{{ asset('images/052.jpg') }}" alt="" />
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Aliquam nec sem faucibus, laoreet augue interdum, volutpat mi. Cras id egestas nisl. Proin ac dui in mauris vehicula imperdiet nec eget sapien. </p>
-        <a class="green" href="">Więcej</a>
-    </div>
-    <div class="tile">
-        <h1 class="orange">KATEGORIA 3</h1>
-        <img src="{{ asset('images/064.jpg') }}" alt="" />
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Aliquam nec sem faucibus, laoreet augue interdum, volutpat mi. Cras id egestas nisl. Proin ac dui in mauris vehicula imperdiet nec eget sapien. </p>
-        <a class="orange" href="">Więcej</a>
-    </div>
-    
-
- </div><!-- end div tiles wrapper -->
+<div id="homeSlider">
+	<div id="imgWrapper">
+		<img class="active" src="{{ asset('images/homefader1.jpg') }}" alt="PHOTO" />
+		<img src="{{ asset('images/fader2.jpg') }}" alt="PHOTO" />
+		<img src="{{ asset('images/fader3.jpg') }}" alt="PHOTO" />
+	</div>
+	<div class="bottom">
+		<h1>LOREM IPSUM DOLOR SIT AMET</h1>
+		<p>Aenean in accumsan metus, vitae tincidunt dui. Curabitur at mauris a nulla fermentum 
+		scelerisque. Nulla laoreet nunc sed lectus sollicitudin tincidunt. Suspendisse potenti. 
+		Proin ut risus mi. Cras pulvinar aliquam volutpat. Aenean lacus justo, egestas nec 
+		posuere id, dictum sit amet metus. In hac habitasse platea dictumst.</p>
+	</div><!-- end bottom -->
+</div><!--end homeSLider -->
 
 
 {% endblock %}
