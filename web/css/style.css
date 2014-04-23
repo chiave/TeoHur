@@ -110,10 +110,19 @@ body, html
 #footer h2
 {
 	padding:15px 15px 2px 15px;
-	margin-top:30px;
+	margin-top:25px;
 	font-weight: normal;
-	font-size: 12px;
-	color: #145132;
+	font-size: 13px;
+	color: #33463C;
+}
+#footer a {
+	font-weight:bold;
+	text-decoration: none;
+	color: #33463C;
+	font-weight:bold;
+}
+#footer a:HOVER{
+	color:green;
 }
 
 .fullWrapper
@@ -373,30 +382,38 @@ ul.arrowList li
 {
 	width:100%;
 	max-width:500px;
+	margin:25px auto;
+}
+.contactForm h5{
+	text-align:center;
+	font-size:16px;
+	padding:15px;
+	color: #805702;
 }
 .contactForm input:FOCUS
 {
-	outline:none;
+	
+	 outline:2px solid rgb(201, 182, 107);
 }
 .contactForm input
 {
-	padding:3px 10px;
-	border-radius:3px;
-    border:1px solid black;
+	padding:7px 10px;
+    border:1px solid rgb(201, 182, 107);
 	width:250px;
 	margin:5px auto;
 	display:block;
+	background: rgb(255, 253, 244);
+	color:rgb(121, 121, 121);
 }
 
 .contactForm textarea
 {
-	border-radius:5px;
 	margin:5px auto;
 	display:block;
 	padding:3px 10px;
-	width:100%;
+	width:250px;
 	max-width:470px;
-	border: 2px inset;
+	border:1px solid rgb(201, 182, 107);
 	font: -webkit-small-control;
 	color: initial;
 	letter-spacing: normal;
@@ -404,23 +421,35 @@ ul.arrowList li
 	text-transform: none;
 	text-indent: 0px;
 	text-shadow: none;
+	background: rgb(255, 253, 244);
+	color:rgb(121, 121, 121);
 }
 .contactForm textarea:FOCUS
 {
-	outline:none;
+	 outline:2px solid rgb(201, 182, 107);
 }
 .contactForm button
 {
 	display:block;
 	width:250px;
-	height:30px;
-	background:#7FE617;
-	border:2px solid #99FF31;
+	height:35px;
+	background:url(../images/menu_bg.jpg) repeat-x;
 	border-radius:3px;
 	color:white;
 	margin:10px auto;
-
-
+	outline: none;
+	border:none;
+}
+.contactForm button:HOVER{
+	cursor: pointer;
+	background:url(../images/menu_bg2.jpg) repeat-x;
+	
+}
+p.form-msg {
+	text-align:center;
+	font-size:13px;
+	padding:25px;
+	color: #805702;
 }
 /*--------------------------end contactForm-------------------------------------*/
 
@@ -777,3 +806,4 @@ ul.arrowList li
     margin-top:10px;
     color:rgb(88, 88, 88);
 }
+
