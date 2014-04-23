@@ -175,6 +175,7 @@ body, html
 	{
 	   padding:10% 1%;
 	}
+	
 
 }
 
@@ -227,7 +228,7 @@ body, html
 	position: relative;
 	padding:2%;
 	border: 1px solid #E4D6BA;
-	background: #FCEFE4;
+	background: #F6F3E2;
 }
 
 .toggleTile h1
@@ -293,7 +294,7 @@ body, html
     position: relative;
     padding:2%;
     border: 1px solid #E4D6BA;
-    background: #FCEFE4;
+    background: #F6F3E2;
 }
 .tileChildren .imgDiv
 {
@@ -356,10 +357,16 @@ body, html
 	padding:1.5% 1%;
 	width:98%;
 }
+.mainContent h3
+{
+	padding:15px 5px;
+	color:rgb(151, 99, 42);
+	font-size:18px;
+}
 
 .mainParagraph
 {
-    font-size: 18px;
+    font-size: 16px;
     text-align: justify;
     color:#805702;
 
@@ -373,7 +380,7 @@ ul.arrowList li
 {
 	background:url('../images/right_arrow.png') no-repeat;
 	background-position:0px 10px;
-	padding:10px 0px 10px 50px;
+	padding:10px 0px 10px 35px;
 
 }
 
@@ -458,18 +465,18 @@ p.form-msg {
 .slider
 {
     position:relative;
-    margin:15px 0px;
+    margin:15px 0px 25px 0px;
 }
 .slider .item
 {
-    width:100%;
-
-
+    width:65%;
     overflow: hidden;
     display: none;
     position:absolute;
     top:0px;
+    left:15%;
     border-radius:3px;
+    padding:10px;
 }
 .slider .item:FIRST-CHILD
 {
@@ -477,29 +484,30 @@ p.form-msg {
 }
 .slider .item:nth-child(even)
 {
-	  background:#ac702d;
+	  background:rgba(168, 124, 76, 0.67);
 }
 .slider .item:nth-child(odd)
 {
-	background: #83a13d;
+	background:rgba(43, 90, 17, 0.67);
 }
 .slider .item img
 {
     float:left;
-    width:200px;
-    height:170px;
-    margin:7px;;
+    width:150px;
+    height:130px;
+    margin-right:10px;
 }
 
 .slider .item h1
 {
-	padding:1% 2%;
 	color:white;
+	padding:10px;
 }
 .slider .item p
 {
-   padding:1%;
     color:white;
+    padding:5px;
+    font-size:14px;
 }
 /*--------------------------------------end slider -----------------------------------*/
 
@@ -681,12 +689,12 @@ p.form-msg {
 .selectList li:FIRST-CHILD a
 {
 	padding:10px 20px;
-	background: #79962c;
+	background: url(../images/menu_bg.jpg) repeat-x;
 	border:1px solid rgb(78, 131, 42);
 	border-radius:3px;
 	color: #f2e6d4;
 	width:180px;
-	font-size: 14px;
+	font-size: 13px;
 }
 .selectList li:FIRST-CHILD a:HOVER
 {
@@ -711,7 +719,7 @@ p.form-msg {
 	margin-top:-1px;
 }
 .selectList li a:HOVER {
-	background: #8ABD02;
+	background: #E6F6C9;
 }
 /*--------------------------end select List -------------------------------- */
 

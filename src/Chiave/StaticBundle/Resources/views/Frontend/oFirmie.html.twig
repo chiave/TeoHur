@@ -6,7 +6,8 @@
 {% block mainSide %}
 
 <div class="mainContent">
-
+	
+	<h3>Kilka słów o firmie:</h3>
 	<div class="mainParagraph">
 	<p>"F.H.P.U TEOFIL" - firma oparta na tradycjach rodzinnych, wywodzi się ze słynnych żurowskich wytwórców galanterii i bednarstwa. Zajmuje się produkcją i dystrybucją wszelkiego rodzaju wyrobów użytkowych z drewna niezbędnych w każdym gospodarstwie domowym. </p>
 	<p> Jesteśmy od wielu już lat producentem artykułów gospodarstwa domowego z drewna. Są to: deski do krojenia o różnym kształcie, widelce drewniane, nożyki do masła, wałki do ciasta, deski do mięsa, młotki do mięsa, tłuczki, łyżki o dowolnych kształtach, łopatki, nożyki, stojaki, tace, wieszaki i wiele innych. Wyroby z drewna są ekologiczne i estetyczne. </p>
@@ -39,24 +40,6 @@
 
 
  {% block javascriptsready %}
-
- $.each( $('.slider'), function( key, value ) {
- 	$(value).css('height', $(value).children(':first').height());
-	 setInterval(function() {
-	 		slideShow(value);
-	 	},
-	 	6000
-	 );
-});
-
- function slideShow(slider){
-     var current = $(slider).find('.show');
-     var next = current.next().length ? current.next() : current.parent().children(':first');
-     var h = $(next).height();
-     next.parent().css('height', h);
-     current.fadeOut(2000).removeClass('show');
-     next.fadeIn(2000).addClass('show');
- };
 
 {% endblock %}
 
