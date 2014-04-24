@@ -16,7 +16,7 @@
 
 </ul>
 </div>
-<div class="chosenItem">Wybrano: <span id="categoryName"></span> </div>
+<div class="chosenItem"><p>Wybrano: <span id="categoryName"></span></p></div>
 
 <div class="separator"></div>
 
@@ -34,7 +34,7 @@
             {% for item in category.items %}
                 <div class="tileChildren">
                      <div class="imgDiv"><img src="{{ item.file.webpath }}" alt="PHOTO" /></div>
-                     <div class="id">{{ item.productKey }}</div>
+                     <div class="id"><p>{{ item.productKey }}</p></div>
                      <h1>{{ item.name }}</h1>
                      <p>{{ item.description }}</p>
                 </div><!-- end tileChildren -->
@@ -87,7 +87,7 @@
                                 '<div class="imgDiv">'+
                                     '<img src="'+item.file+'" alt="PHOTO" />'+
                                 '</div>'+
-                                '<div class="id">'+item.productKey+'</div>'+
+                                '<div class="id"><p>'+item.productKey+'</p></div>'+
                                 '<h1>'+item.name+'</h1>'+
                                 '<p>'+item.description+'</p>'+
                             '</div>';

@@ -2,17 +2,17 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}
-        	 <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css" />
-        	  <link rel="stylesheet" href="{{ asset('css/reset.css') }}" type="text/css" />
-        {% endblock %}
+        <title>{% block title %}Hurtownia Teofil Wyroby z drewna galanteria drewniana akcesoria kuchenne producent wyrobów z drewna{% endblock %}</title>
+        <meta name="Description" content="{% block description %}Hurtownia wyrobów z drewna. Oferujemy Państwu bogaty wybór artykułów niezbędnych w każdym gospodarstwie domowym.{% endblock %}" />
+        <meta name="Keywords" content="wyroby z drewna, galanteria drewniana, hurtownia wyrobów z drewna, młotki, tłuczki, ubijaki, dziadki do orzechów, szatkownice młynki, cukiernice, naczynia drewniane, chlebaki, czerpaki, nożyki, widelce, łopatki, łyżki, stolnice, stojaki, deski do krojenia , Komplety" />
+        <meta name="Author" content="Łukasz Mikrut, Konrad Mietelski" />
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('css/reset.css') }}" type="text/css" />
         <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.png') }}" />
-       <link href='http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-		<link href='http://fonts.googleapis.com/css?family=Courgette&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Courgette&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <script src="{{ asset('js/jquery-1.11.0.min.js') }}"></script>
-         <script src="{{ asset('js/lukeWidgets.js') }}"></script>
+        <script src="{{ asset('js/lukeWidgets.js') }}"></script>
     </head>
     <body>
     	<div id="page">
@@ -27,13 +27,13 @@
     		<div class="leftSide">
     			<div class="verticalMenu">
     				<ul>
-<li><a href="{{ path('chiave_static', { slug: 'glowna'}) }}">Strona główna</a></li>
-<li><a href="{{ path('chiave_static', { slug: 'oFirmie'} ) }}">O firmie</a></li>
-<li><a href="{{ path('chiave_gallery_frontend_categories_show') }}">Produkty</a></li>
-<li><a href="{{ path('chiave_static', { slug: 'cennik'} ) }}">Cennik</a></li>
-<li><a href="{{ path('chiave_static', { slug: 'zamowienia'} ) }}">Zamówienia</a></li>
-<li><a href="{{ path('chiave_static', { slug: 'dojazd'} ) }}">Dojazd</a></li>
-<li><a href="{{ path('chiave_static', { slug: 'kontakt'} ) }}">Kontakt</a></li>
+    				<li><a href="{{ path('chiave_static', { slug: 'glowna'}) }}">Strona główna</a></li>
+    				<li><a href="{{ path('chiave_static', { slug: 'oFirmie'} ) }}">O firmie</a></li>
+    				<li><a href="{{ path('chiave_gallery_frontend_categories_show') }}">Produkty</a></li>
+    				<li><a href="{{ path('chiave_static', { slug: 'cennik'} ) }}">Cennik</a></li>
+    				<li><a href="{{ path('chiave_static', { slug: 'zamowienia'} ) }}">Zamówienia</a></li>
+    				<li><a href="{{ path('chiave_static', { slug: 'dojazd'} ) }}">Dojazd</a></li>
+    				<li><a href="{{ path('chiave_static', { slug: 'kontakt'} ) }}">Kontakt</a></li>
     				</ul>
     			</div>
                 {% block leftSide %}{% endblock %}
